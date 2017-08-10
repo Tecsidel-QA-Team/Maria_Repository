@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.LongStream;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -18,6 +20,40 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class _CAC_Settingsfields_ {
+	public static String RUCid = "ctl00_ContentZone_ctrlAccountData_txt_RUC_box_data";	
+	public static String infoCuenta0 = "ctl00_ContentZone_ctrlAccountData_radio_company_0";
+	public static String infoCuenta1 = "ctl00_ContentZone_ctrlAccountData_radio_company_1";
+	public static String titulofield = "ctl00_ContentZone_ctrlAccountData_cmb_title_cmb_dropdown";
+	public static String namef = "ctl00_ContentZone_ctrlAccountData_txt_forname_box_data";
+	public static String surnamef ="ctl00_ContentZone_ctrlAccountData_txt_surname_box_data";
+	public static String addressf = "ctl00_ContentZone_ctrlAccountData_txt_address_box_data";
+	public static String cpf = "ctl00_ContentZone_ctrlAccountData_txt_postcode_box_data";
+	public static String townf = "ctl00_ContentZone_ctrlAccountData_txt_town_box_data";
+	public static String countryf = "ctl00_ContentZone_ctrlAccountData_txt_country_box_data";
+	public static String emailf ="ctl00_ContentZone_ctrlAccountData_txt_email_box_data";
+	public static String phoneCel = "ctl00_ContentZone_ctrlAccountData_txt_mobile_box_data";
+	public static String workPhone = "ctl00_ContentZone_ctrlAccountData_txt_daytimephone_box_data";
+	public static String perPhone = "ctl00_ContentZone_ctrlAccountData_txt_homephone_box_data";
+	public static String faxPhone = "ctl00_ContentZone_ctrlAccountData_txt_fax_box_data";
+	public static String companyf = "ctl00_ContentZone_ctrlAccountData_txt_company_box_data";
+	public static String contactf = "ctl00_ContentZone_ctrlAccountData_txt_contact_box_data";
+	public static int carModelSel;
+	public static String confirmationMessage;
+	public static boolean errorTagAssignment = false;
+	public static String tagIdNmbr;
+	public static String [] colorS = new String[]{"Blanco", "Negro", "Azul", "Rojo", "Verde", "Amarillo"};
+	public static String matletT = "TRWAGMYFPDXBNJZSQVHLCKE";
+	public static String accountNumbr; 
+	public static int carSel;
+	public static int carModel;
+	public static String matriNu;
+	public static String vehtypeModel;
+	public static String vehtypeKind;
+	public static String [][] cocheModels = {{"Seat","Volkswagen","Ford","Fiat"},{"Ibiza","Polo","Fiesta","Punto"},{"León","Passat","Focus","Stilo"}};
+	public static String [][] camionModels = {{"Mercedes-Benz","Scania"},{"Axor","R500"},{"Actros","P400"}};
+	public static String [][] furgonetaModels = {{"Mercedes-Benz","Fiat"},{"Vito","Scudo"},{"Citan","Ducato"}};
+	public static String [][] cicloModels = {{"Yamaha","Honda"},{"XT1200Z","Forza 300"},{"T-MAX SX","X-ADV"}};
+	public static String [][] autoBusModels = {{"DAIMLER-BENZ","VOLVO"},{"512-CDI","FM-12380"},{"DB 605","FM 300"}};
 	public static final String Letter_Comb = "TRWAGMYFPDXBNJZSQVHLCKE";
 	public static Calendar calF; 
 	public static Calendar calT;
@@ -58,7 +94,9 @@ public class _CAC_Settingsfields_ {
 	public static String repeatpwdField = "ctl00_ContentZone_password2_box_data";
 	public static String hourNumber = "ctl00_ContentZone_TxtNomHousr_box_data";
 	public static String submitBtn = "ctl00_ButtonsZone_BtnSubmit";
-	public static String [] nameOp = new String[] {"Pilar", "Mavi", "Franklyn", "Gemma", "Fatima", "Marc", "Miguel", "Francisco", "Oscar", "Maria Jesus"};
+	public static String CACBOVersion;
+	public static String CACHMVersion;
+	public static String [] nameOp = new String[] {"Pilar", "Mavi", "Franklyn", "Gemma", "Fatima", "Marc", "Miguel", "Francisco", "Oscar", "Maria"};
 	public static String [] genderS = new String[] {"Femenino", "Femenino", "Masculino", "Femenino", "Femenino", "Masculino", "Masculino", "Masculino", "Masculino", "Femenino"};
 	public static String [] sexSelc = new String[] {"Sra", "Sra", "Sr", "Sra", "Sra", "Sr", "Sr", "Sr", "Sr", "Sra"};
 	public static String [] addressTec = new String[] {"CALLE SAN MAXIMO, 3","CALLE SAN MAXIMO, 3","Castanyer 29", "CALLE SAN MAXIMO, 3","CALLE SAN MAXIMO, 3","Catanyer 29","Edificio Tecsidel, P.T. de Boecillo","Edificio Tecsidel, P.T. de Boecillo","Edificio Tecsidel, P.T. de Boecillo","Edificio Tecsidel, P.T. de Boecillo"};
@@ -182,7 +220,6 @@ public class _CAC_Settingsfields_ {
 		calT.set(ranNumbr(1972,1979), ranNumbr(1,12), ranNumbr(1,31));
 
 	}
-     	
      	public static int ranNumbr(int min, int max) {
    		  Random rand = new Random();
    		  numbering = min+rand.nextInt((max-min)+1);
