@@ -25,7 +25,7 @@ public class _MCS_Settingsfields {
 	public static WebDriver driver;		
 	public static String BoHostUrl="http://virtualbo-qa/BOQAHostCoviHonduras/web/forms/core/login.aspx";
 	public static String BoPlazaUrl="http://virtualbo-qa/BOQAPlazaCoviHonduras/web/forms/core/login.aspx";
-	//public static String MCSUrl="http://virtualMCS-qa/MCS_CoviHonduras/web/forms/core/login.aspx";
+	public static String MCSUrl="http://virtualMCS-qa/MCS_CoviHonduras/web/forms/core/login.aspx";
 	public boolean acceptNextAlert = true;
 	public static Calendar calF; 
 	public static Calendar calT;
