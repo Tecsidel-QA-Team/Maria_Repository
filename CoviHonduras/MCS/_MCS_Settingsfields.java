@@ -131,11 +131,6 @@ public class _MCS_Settingsfields {
 
 	}
 
-     	public static int ranYearNumbr(int min, int max) {
-     		  Random rand = new Random();
-     		  numbering = min+rand.nextInt((max-min)+1);
-     		  return numbering;    		  
-       	}
      	/*public static String dniLetra (int dni){
   		  return String.valueOf(dni)+(NIF_STRING_ASOCIATION.charAt(dni % 23));
   	  }*/
