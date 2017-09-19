@@ -45,8 +45,7 @@ public class _MCS_Settingsfields {
 	public static String pwdField = "ctl00_ContentZone_password_box_data";
 	public static String repeatpwdField = "ctl00_ContentZone_password2_box_data";	
 	public static String submitBtn = "ctl00_ButtonsZone_BtnSubmit";
-	public static String BOVersion;
-	public static String BOHMVersion;
+	public static String BOVersion;	
 	public static String [] nameOp = new String[] {"Pilar", "Mavi", "Franklyn", "Gemma", "Fatima", "Marc", "Miguel", "Francisco", "Oscar", "Maria"};
 	public static String [] genderS = new String[] {"Femenino", "Femenino", "Masculino", "Femenino", "Femenino", "Masculino", "Masculino", "Masculino", "Masculino", "Femenino"};
 	public static String [] sexSelc = new String[] {"Sra", "Sra", "Sr", "Sra", "Sra", "Sr", "Sr", "Sr", "Sr", "Sra"};
