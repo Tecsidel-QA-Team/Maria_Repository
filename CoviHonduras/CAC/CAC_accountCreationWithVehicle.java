@@ -55,14 +55,15 @@ public class CAC_accountCreationWithVehicle extends _CAC_Settingsfields_ {
 
 @Test
 	public void accountCreationWithVehicleInit() throws Exception {
+		CAC.CAC_accountCreationOnly.accountCreation();
 		Thread.sleep(1000);
+		elementClick("ctl00_ButtonsZone_BtnValidate_IB_Label");// Guardar Cuenta con el botón
+		Thread.sleep(2000);
+		accountCreationWithVehicle();
 		
 	}
 
 public static void accountCreationWithVehicle() throws Exception {
-		Thread.sleep(2000);
-		elementClick("ctl00_ButtonsZone_BtnValidate_IB_Label");
-		Thread.sleep(2000);
 		elementClick("ctl00_ContentZone_BtnVehicles");
 		Thread.sleep(1000);		
 		takeScreenShot("E:\\Selenium\\","vehiclePage"+timet+".jpg");

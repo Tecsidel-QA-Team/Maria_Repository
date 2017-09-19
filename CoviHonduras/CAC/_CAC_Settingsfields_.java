@@ -72,10 +72,7 @@ public class _CAC_Settingsfields_ {
 	public static String descriptionSubject;
 	public static String errorLev;
 	public static WebDriver driver;	
-	public static String CaCUrl="http://virtualcac-qa/CACQACovihonduras/web/forms/core/login.aspx";
-	public static String BoHostUrl="http://virtualbo-qa/BOQAHostCoviHonduras/web/forms/core/login.aspx";
-	public static String BoPlazaUrl="http://virtualbo-qa/BOQAPlazaCoviHonduras/web/forms/core/login.aspx";
-	public static String MCSUrl="http://virtualMCS-qa/MCS_CoviHonduras/web/forms/core/login.aspx";
+	public static String CaCUrl="http://virtualcac-qa/CACQACovihonduras/web/forms/core/login.aspx";	
 	public boolean acceptNextAlert = true;
 	public static StringBuffer verificationErrors = new StringBuffer();
 	public static int numbering;
