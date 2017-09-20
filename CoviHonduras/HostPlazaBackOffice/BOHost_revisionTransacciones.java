@@ -5,13 +5,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
-import HostPlazaBackOffice._BackOffice_Settingsfields_;
+import coviHondurasSettingFile.Settingsfields_File;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
 
-public class BOHost_revisionTransacciones extends _BackOffice_Settingsfields_{
+public class BOHost_revisionTransacciones extends Settingsfields_File{
 		
 @Before
 		public void setUp() throws Exception{

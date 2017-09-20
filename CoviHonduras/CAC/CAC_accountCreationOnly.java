@@ -1,34 +1,17 @@
 package CAC;
 
 import static org.junit.Assert.*;
-
-import java.io.File;
-import java.sql.Timestamp;
-
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-
-import CAC._CAC_Settingsfields_;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.chrome.*;
+import coviHondurasSettingFile.Settingsfields_File;
 
-public class CAC_accountCreationOnly extends _CAC_Settingsfields_ {
+public class CAC_accountCreationOnly extends Settingsfields_File {
 	
 			@Before
 			public void setUp() throws Exception{
@@ -56,7 +39,7 @@ public class CAC_accountCreationOnly extends _CAC_Settingsfields_ {
 				accountCreation();
 				Thread.sleep(1000);
 				System.out.println("Se ha creado la cuenta: "+accountNumbr.substring(7,16)+" correctamente");
-				System.out.println("Se ha probado en la versión del CAC BO: " + CACBOVersion.substring(1,16)+" y CAC Manager: "+CACBOVersion.substring(17));
+				System.out.println("Se ha probado en la versión del CAC BO: " + BOVersion.substring(1,16)+" y CAC Manager: "+BOVersion.substring(17));
 			}
 
 		public static void accountCreation() throws Exception {
@@ -72,7 +55,7 @@ public class CAC_accountCreationOnly extends _CAC_Settingsfields_ {
 				Thread.sleep(1000);
 				takeScreenShot("E:\\Selenium\\","homeCACCVHPage"+timet+".jpg");
 				takeScreenShot("E:\\workspace\\Maria_Repository\\CAC_accountCreationAlone\\attachments\\","homeCACCVHPage.jpg");
-				CACBOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
+				BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
 				Thread.sleep(2000);					
 				action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
 				Thread.sleep(1000);

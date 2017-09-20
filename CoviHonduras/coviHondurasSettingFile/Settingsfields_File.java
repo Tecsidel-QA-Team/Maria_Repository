@@ -1,16 +1,11 @@
-package CAC;
+package coviHondurasSettingFile;
 
 import java.io.File;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-
-import org.openqa.selenium.chrome.ChromeOptions;
-
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.LongStream;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -19,7 +14,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class _CAC_Settingsfields_ {
+public class Settingsfields_File {
+	public static String BoHostUrl="http://virtualbo-qa/BOQAHostCoviHonduras/web/forms/core/login.aspx";
+	public static String BoPlazaUrl="http://virtualbo-qa/BOQAPlazaCoviHonduras/web/forms/core/login.aspx";
 	public static String RUCid = "ctl00_ContentZone_ctrlAccountData_txt_RUC_box_data";	
 	public static String infoCuenta0 = "ctl00_ContentZone_ctrlAccountData_radio_company_0";
 	public static String infoCuenta1 = "ctl00_ContentZone_ctrlAccountData_radio_company_1";
@@ -38,6 +35,7 @@ public class _CAC_Settingsfields_ {
 	public static String companyf = "ctl00_ContentZone_ctrlAccountData_txt_company_box_data";
 	public static String contactf = "ctl00_ContentZone_ctrlAccountData_txt_contact_box_data";
 	public static int carModelSel;
+	public static String mcsVersion = "lbl_version"; 
 	public static String confirmationMessage;
 	public static boolean errorTagAssignment = false;
 	public static String tagIdNmbr;
@@ -91,8 +89,10 @@ public class _CAC_Settingsfields_ {
 	public static String repeatpwdField = "ctl00_ContentZone_password2_box_data";
 	public static String hourNumber = "ctl00_ContentZone_TxtNomHousr_box_data";
 	public static String submitBtn = "ctl00_ButtonsZone_BtnSubmit";
-	public static String CACBOVersion;
-	public static String CACHMVersion;
+	public static String MCSUrl="http://virtualmcs-qa/MCS_CoviHonduras";
+	public static String MCSVersion;
+	public static String BOVersion;
+	public static String HMVersion;
 	public static String [] nameOp = new String[] {"Pilar", "Mavi", "Franklyn", "Gemma", "Fatima", "Marc", "Miguel", "Francisco", "Oscar", "Maria"};
 	public static String [] genderS = new String[] {"Femenino", "Femenino", "Masculino", "Femenino", "Femenino", "Masculino", "Masculino", "Masculino", "Masculino", "Femenino"};
 	public static String [] sexSelc = new String[] {"Sra", "Sra", "Sr", "Sra", "Sra", "Sr", "Sr", "Sr", "Sr", "Sra"};

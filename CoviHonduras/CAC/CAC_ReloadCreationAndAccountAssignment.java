@@ -1,38 +1,20 @@
 package CAC;
-
 import static org.junit.Assert.*;
-
-import java.io.File;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-
-import CAC._CAC_Settingsfields_;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.chrome.*;
+import coviHondurasSettingFile.Settingsfields_File;
 
-public class CAC_ReloadCreationAndAccountAssignment extends _CAC_Settingsfields_ {
+
+
+public class CAC_ReloadCreationAndAccountAssignment extends Settingsfields_File {
 			 private static boolean accountClosed = false;
 			 private static boolean reloadCreated = false;		 
 			 private static String applicationType;
@@ -97,7 +79,7 @@ public static void accountReload() throws Exception {
 	Thread.sleep(1000);
 	takeScreenShot("E:\\Selenium\\","homeCACCVHPage"+timet+".jpg");
 	takeScreenShot("E:\\workspace\\Maria_Repository\\ReloadCreation\\attachments\\","homeCACCVHPage.jpg");
-	CACBOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
+	BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
 	Thread.sleep(2000);					
 	action.clickAndHold(driver.findElement(By.linkText("Configuración sistema"))).build().perform();
 	Thread.sleep(1000);

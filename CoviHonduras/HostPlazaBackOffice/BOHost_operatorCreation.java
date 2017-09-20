@@ -1,18 +1,11 @@
 package HostPlazaBackOffice;
 
 import static org.junit.Assert.*;
-
+import coviHondurasSettingFile.Settingsfields_File;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.openqa.selenium.interactions.Actions;
-
-import HostPlazaBackOffice._BackOffice_Settingsfields_;
-
 import java.util.List;
-
 import java.util.concurrent.TimeUnit;
-
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +14,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 
-public class BOHost_operatorCreation extends _BackOffice_Settingsfields_ {
+public class BOHost_operatorCreation extends Settingsfields_File {
 			 private static String lastcreated ;
 			 private static WebElement tableResult;
 			 private static List<WebElement> userResults;
