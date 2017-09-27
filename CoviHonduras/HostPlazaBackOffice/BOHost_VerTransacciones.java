@@ -37,7 +37,15 @@ public class BOHost_VerTransacciones extends Settingsfields_File{
 }
 
 			@Test
-			public void hostTransacciones() throws Exception {
+			public void verTransaccionesInit() throws Exception{
+				verTransacciones();
+				String elementsFound = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();				
+				Thread.sleep(1500);
+				System.out.println("Busqueda Completa: "+ elementsFound);
+				Thread.sleep(1000);	
+			}
+			
+			public static void verTransacciones() throws Exception {
 				Actions action = new Actions(driver);
 				borrarArchivosTemp("E:\\workspace\\Maria_Repository\\BOHost_VerTranscciones\\attachments\\");
 				try{
@@ -68,10 +76,7 @@ public class BOHost_VerTransacciones extends Settingsfields_File{
 					takeScreenShot("E:\\Selenium\\","verTransaccionesResults"+timet+".jpg");
 					takeScreenShot("E:\\workspace\\Maria_Repository\\BOHost_VerTranscciones\\attachments\\","verTransaccionesRetults.jpg");
 					Thread.sleep(1000);
-					String elementsFound = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();				
-					Thread.sleep(1500);
-					System.out.println("Busqueda Completa: "+ elementsFound);
-					Thread.sleep(1000);					
+				
 				}catch(Exception e){
 					e.printStackTrace();
 					fail();
