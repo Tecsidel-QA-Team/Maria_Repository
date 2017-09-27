@@ -15,6 +15,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class Settingsfields_File {
+	public static String dateverTransacciones;
 	public static String BoHostUrl="http://virtualbo-qa/BOQAHostCoviHonduras/web/forms/core/login.aspx";
 	public static String BoPlazaUrl="http://virtualbo-qa/BOQAPlazaCoviHonduras/web/forms/core/login.aspx";
 	public static String RUCid = "ctl00_ContentZone_ctrlAccountData_txt_RUC_box_data";	

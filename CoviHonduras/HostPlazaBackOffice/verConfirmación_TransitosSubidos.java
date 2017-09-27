@@ -2,51 +2,45 @@ package HostPlazaBackOffice;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.sql.ResultSet;
-import javax.sql.rowset.CachedRowSet;
-
-import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
-import com.sun.rowset.CachedRowSetImpl;
 
 
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-import BackOffice.senacFieldsConfiguration;
+import coviHondurasSettingFile.Settingsfields_File;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.LongStream;
-
-import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 
 
-public class verConfirmación_TransitosSubidos extends senacFieldsConfiguration{
+
+public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 		private static Statement stmt;
+		private static String transSearch;
 		private static ResultSet rs;
+		public static int i;
 		private static String queryString;
-		private static String verFile;
+		private static ArrayList<String> transactionsHIds = new ArrayList<String>();
+		private static ArrayList<String> transactionsPIds = new ArrayList<String>();	
+		private static String Hour1;
+		private static String Min1;
+		private static String Sec1;
 
-
+		@Before
 		public void setUp() throws Exception{
     		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
     			/*DesiredCapabilities cap = DesiredCapabilities.internetExplorer();
@@ -62,44 +56,93 @@ public class verConfirmación_TransitosSubidos extends senacFieldsConfiguration{
 
 		
 @Test		
-			public void dataBaseConnection() throws Exception{
+			public void verConfirmacion_Transitos() throws Exception{
 			
 			//borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\conexion_BBDDSenac\\attachments\\");
-			 String connectionUrl = "jdbc:sqlserver://172.18.130.188:1433;DataBaseName=COVIHONDURAS_QA_TOLLHOST"; //+ "user=sa; password=lediscet";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
+				DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+				DateFormat dateF = new SimpleDateFormat("dd/MM/yyyy");
+				Date date = new Date();			
+				dateverTransacciones = "26/09/2017";//dateF.format(date);
+				transSearch = "20170926";//dateFormat.format(date);
+				String connectionUrlPlaza = "jdbc:sqlserver://172.18.130.188:1433;DataBaseName=COVIHONDURAS_QA_TOLLPLAZA"; //+ "user=sa; password=lediscet";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
+				String connectionUrlHost = "jdbc:sqlserver://172.18.130.188:1433;DataBaseName=COVIHONDURAS_QA_TOLLHOST"; //+ "user=sa; password=lediscet";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
 			    stmt = null;
 			    rs = null;
-		      try {
-		         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		         Connection conn = DriverManager.getConnection(connectionUrl, "sa", "lediscet");
-		         stmt = conn.createStatement();
-		         queryString = "select passagetime, transactionid from dbo.atransaction where passagetime like '20170921%' ORDER BY passagetime DESC";
-		         //queryString = "SELECT M.PLAZANODE, M.LANENODE, M.MSGSEQ, M.MSGNUMBER, M.MSGTIME, M.MSGTYPE, M.MSGVERSION, M.MSGSTATUS, M.UPLOADSTATUS, M.UPLOADPACK FROM AMESSAGE M  WHERE M.PLAZANODE= '0101' AND ((M.MSGSTATUS IN ('2','3','4') AND M.MSGTIME >= '20170411150608') OR M.MSGSTATUS = '5') UNION   SELECT MP.PLAZANODE, MP.LANENODE, MP.MSGSEQ, MP.MSGNUMBER, MP.MSGTIME, MP.MSGTYPE, MP.MSGVERSION, MP.MSGSTATUS, MP.UPLOADSTATUS, MP.UPLOADPACK FROM AMESSAGEPARAL MP  WHERE MP.PLAZANODE= '0101' AND ((MP.MSGSTATUS IN ('2','3','4') AND MP.MSGTIME >= '20170411150608') OR MP.MSGSTATUS = '5')";
-		         rs = stmt.executeQuery(queryString);
-		         String PCD;
-		       /*  verFile = "verSenacConnectBBDDResultados_";
-					File result = new File("E:\\Selenium\\"+verFile+timet+".txt");
-					File resultTmp = new File("E:\\workspace\\Mavi_Repository\\conexion_BBDDSenac\\attachments\\"+verFile+timet+".txt");	  						
-					FileOutputStream fis = new FileOutputStream(new File(result.toString()));
-					FileOutputStream fis2 = new FileOutputStream(new File(resultTmp.toString()));
-					PrintStream out = new PrintStream(fis);
-					PrintStream out2 = new PrintStream(fis2);  						
-					PrintStream old = System.out;
-					System.setOut(out);
-					System.setOut(out2);*/
-		         System.out.print(StringUtils.center("PASSAGETIME",15));
-		         System.out.printf(StringUtils.center("ATRASANCTION",25));
-		         System.out.println("");
-		         for (int a = 1; a <50; a++){
-						System.out.print("-");
-					}
-				while (rs.next()) {
-		        	PCD = rs.getString("passagetime");
-		        	String PCD1 = rs.getString("transactionid");
-		        	System.out.println("");
-		        	System.out.printf("%-20s",PCD);
-		        	System.out.printf("%-20s",PCD1);
-		        	
-		         }
+			    try {
+			    		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			    		Connection conn = DriverManager.getConnection(connectionUrlPlaza, "sa", "lediscet");
+			    		stmt = conn.createStatement();
+			    		queryString = "select passagetime, transactionid from dbo.atransaction where passagetime like '"+transSearch+"%' ORDER BY passagetime DESC";
+			    		rs = stmt.executeQuery(queryString);
+			    		String [] transactions = new String[2]; 			   
+			    		while (rs.next()) {
+			    			for (i = 0; i < transactions.length;i++){
+			    				transactions[0]= rs.getString("passagetime");
+			    				transactions[1] = rs.getString("transactionid");
+			    				transactionsPIds.add(transactions[i]);
+			    			}
+			    		}
+			    		if (transactions[0]==null&&transactions[1]==null){
+			    			System.out.println("No han subido tránsitos a Plaza");
+			    			fail("No han subido tránsitos a Plaza");
+			    		}else{	
+			    			Connection conn2 = DriverManager.getConnection(connectionUrlHost, "sa", "lediscet");
+			    			stmt = conn2.createStatement();
+				    		queryString = "select passagetime, transactionid from dbo.atransaction where passagetime like '"+transSearch+"%' ORDER BY passagetime DESC";
+				    		rs = stmt.executeQuery(queryString);
+				    		while (rs.next()) {
+				    			for (i = 0; i < transactions.length;i++){
+				    				transactions[0]= rs.getString("passagetime");
+				    				transactions[1] = rs.getString("transactionid");
+				    				transactionsHIds.add(transactions[i]);
+				    			}				    			
+				    		}
+				    		Hour1 = transactionsHIds.get(0).substring(8,10);
+							Min1 = transactionsHIds.get(0).substring(10,12);
+							Sec1 = transactionsHIds.get(0).substring(12,14);
+				    		if (transactions[0]==null&&transactions[1]==null){
+				    			System.out.println("No han subido tránsitos a Host");
+				    			fail("No han subido tránsitos a Host");
+				    		}else{
+				    			Thread.sleep(1000);
+				    			HostPlazaBackOffice.BOHost_VerTransacciones.verTransacciones();
+				    			Thread.sleep(1000);
+				    			WebElement tablResult = driver.findElement(By.id("ctl00_ContentZone_tbl_logs"));
+				    			List<WebElement> transResult = tablResult.findElements(By.tagName("tr"));
+				    			if (transResult.size()<3){
+				    				System.out.println("No hay Transacciones en el BackOffice Web con fecha de hoy");
+					    			fail("No hay Transacciones en el BackOffice Web con fecha de hoy");
+					    			return;
+				    			}
+				    			
+				    			if (transResult.size()<19){
+				    				String transRes = driver.findElement(By.xpath("//*[@id='ctl00_ContentZone_tbl_logs']/tbody/tr["+transResult.size()+"]/td[1]/a")).getText();				    				
+				    				if (transRes.equals(transactionsHIds.get(1))){
+				    					System.out.println("Se ha subido el último tránsito: "+transactionsHIds.get(1)+" satisfactoriamente el dia de hoy "+dateverTransacciones+" "+Hour1+":"+Min1+":"+Sec1);
+				    					return;
+				    				}else{
+				    					System.out.println("No se ha subido el último tránsito a BackOffice Web desde HostManage de hoy");
+						    			fail("No se ha subido el último tránsito a BackOffice Web HostManage con fecha de hoy");
+						    			return;
+				    				}
+				    			}else{
+				    				elementClick("ctl00_ContentZone_tablePager_BtnLast");
+				    				tablResult = driver.findElement(By.id("ctl00_ContentZone_tbl_logs"));
+					    			transResult = tablResult.findElements(By.tagName("tr"));
+					    			String transRes = driver.findElement(By.xpath("//*[@id='ctl00_ContentZone_tbl_logs']/tbody/tr["+transResult.size()+"]/td[1]/a")).getText();
+				    				if (transRes.equals(transactionsHIds.get(1))){
+				    					System.out.println("Se ha subido el último tránsito: "+transactionsHIds.get(1)+" satisfactoriamente el dia de hoy "+dateverTransacciones+" "+Hour1+":"+Min1+":"+Sec1);
+				    					return;
+				    				}else{
+				    					System.out.println("No se ha subido el último tránsito a BackOffice Web desde HostManage de hoy");
+						    			fail("No se ha subido el último tránsito a BackOffice Web HostManage con fecha de hoy");
+						    			return;
+				    				}
+				    				
+				    			}
+				    		}
+							System.out.println(transactionsHIds.get(1));
+			    		}
 					//fis.close();
 					//fis2.close();
 					//System.setOut(old);
@@ -109,9 +152,9 @@ public class verConfirmación_TransitosSubidos extends senacFieldsConfiguration{
 				}
 		}		
 			
-		@After
+			@After
 			public void tearDown() throws Exception{			  
-				    //driver.quit();
+					driver.quit();
 				    String verificationErrorString = verificationErrors.toString();
 				    if (!"".equals(verificationErrorString)) {
 				      fail(verificationErrorString);
