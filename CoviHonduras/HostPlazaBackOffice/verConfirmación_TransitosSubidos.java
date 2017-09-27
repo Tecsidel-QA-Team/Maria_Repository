@@ -56,8 +56,7 @@ public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 
 		
 @Test		
-			public void verConfirmacion_Transitos() throws Exception{
-			
+			public void verConfirmacion_Transitos() throws Exception{			
 			//borrarArchivosTemp("E:\\workspace\\Mavi_Repository\\conexion_BBDDSenac\\attachments\\");
 				DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 				DateFormat dateF = new SimpleDateFormat("dd/MM/yyyy");
@@ -85,7 +84,8 @@ public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 			    		if (transactions[0]==null&&transactions[1]==null){
 			    			System.out.println("No han subido tránsitos a Plaza con fecha de hoy "+dateverTransacciones);
 			    			fail("No han subido tránsitos a Plaza con fecha de hoy "+dateverTransacciones);
-			    		}else{	
+			    		}else{
+			    			System.out.println("En Plaza han subido hoy: "+transactionsPIds.size()/2);
 			    			Connection conn2 = DriverManager.getConnection(connectionUrlHost, "sa", "lediscet");
 			    			stmt = conn2.createStatement();
 				    		queryString = "select passagetime, transactionid from dbo.atransaction where passagetime like '"+transSearch+"%' ORDER BY passagetime DESC";
@@ -104,6 +104,7 @@ public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 				    			System.out.println("No han subido tránsitos a Host con fecha de hoy "+dateverTransacciones);
 				    			fail("No han subido tránsitos a Host con fecha de hoy "+dateverTransacciones);
 				    		}else{
+				    			System.out.println("En Host han subido hoy: "+transactionsPIds.size()/2);
 				    			Thread.sleep(1000);
 				    			HostPlazaBackOffice.BOHost_VerTransacciones.verTransacciones();
 				    			Thread.sleep(1000);
@@ -114,11 +115,17 @@ public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 					    			fail("No hay Transacciones en el BackOffice Web con fecha de hoy");
 					    			return;
 				    			}
-				    			
+				    			String elementsFound = driver.findElement(By.id("ctl00_ContentZone_tablePager_LblCounter")).getText();
+				    			int elementBg=24;
+				    			int elementEd=25;
+				    			if (transResult.size()>11){
+			    					elementBg = 25;
+			    					elementEd=27;
+			    				}
 				    			if (transResult.size()<19){
 				    				String transRes = driver.findElement(By.xpath("//*[@id='ctl00_ContentZone_tbl_logs']/tbody/tr["+transResult.size()+"]/td[1]/a")).getText();				    				
 				    				if (transRes.equals(transactionsHIds.get(1))){
-				    					System.out.println("Se ha subido el último tránsito: "+transactionsHIds.get(1)+" satisfactoriamente el dia de hoy "+dateverTransacciones+" "+Hour1+":"+Min1+":"+Sec1);
+				    					System.out.println("Hay "+elementsFound.substring(elementBg,elementEd)+" transacciones y el último tránsito: "+transactionsHIds.get(1)+" ha subido satisfactoriamente el dia de hoy "+dateverTransacciones+" "+Hour1+":"+Min1+":"+Sec1);
 				    					return;
 				    				}else{
 				    					System.out.println("No se ha subido el último tránsito a BackOffice Web desde HostManage de hoy");
@@ -131,7 +138,7 @@ public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 					    			transResult = tablResult.findElements(By.tagName("tr"));
 					    			String transRes = driver.findElement(By.xpath("//*[@id='ctl00_ContentZone_tbl_logs']/tbody/tr["+transResult.size()+"]/td[1]/a")).getText();
 				    				if (transRes.equals(transactionsHIds.get(1))){
-				    					System.out.println("Se ha subido el último tránsito: "+transactionsHIds.get(1)+" satisfactoriamente el dia de hoy "+dateverTransacciones+" "+Hour1+":"+Min1+":"+Sec1);
+				    					System.out.println("Hay "+elementsFound.substring(elementBg,elementEd)+" transacciones y el último tránsito: "+transactionsHIds.get(1)+" ha sido satisfactoriamente el dia de hoy "+dateverTransacciones+" "+Hour1+":"+Min1+":"+Sec1);
 				    					return;
 				    				}else{
 				    					System.out.println("No se ha subido el último tránsito a BackOffice Web desde HostManage de hoy");
