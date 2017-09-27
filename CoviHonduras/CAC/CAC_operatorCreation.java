@@ -85,7 +85,7 @@ public void crearOperadores() throws Exception {
 		Thread.sleep(100);
 		driver.findElement(By.id("ctl00_ContentZone_txt_country_box_data")).sendKeys("España");
 		Thread.sleep(100);
-		driver.findElement(By.id("ctl00_ContentZone_email_box_data")).sendKeys(nameOp[userSel].toLowerCase()+lastNameOp[userSel].toLowerCase()+"@tecsidel.es@");
+		driver.findElement(By.id("ctl00_ContentZone_email_box_data")).sendKeys(nameOp[userSel].toLowerCase()+lastNameOp[userSel].toLowerCase()+"@tecsidel.es");
 		driver.findElement(By.id("ctl00_ContentZone_txt_phone_box_data")).sendKeys(workPhone1[userSel]);
 		selectDropDown("ctl00_ContentZone_group_cmb_dropdown");
 		Thread.sleep(1000);
@@ -106,10 +106,18 @@ public void crearOperadores() throws Exception {
 		takeScreenShot("E:\\workspace\\Maria_Repository\\CAC_crearOperadores\\attachments\\","userCreated.jpg");
 		WebElement tableResult = driver.findElement(By.id("ctl00_ContentZone_TblResults"));
 		List<WebElement> userResults = tableResult.findElements(By.tagName("tr"));
-		for (int i = 1; i <= userResults.size(); i++){
-			if (i == userResults.size()){
-				lastcreated = driver.findElement(By.xpath("//table[@id='ctl00_ContentZone_TblResults']/tbody/tr["+i+"]/td[2]")).getText();
-			}	
+		if (userResults.size()<14){
+			for (int i = 1; i <= userResults.size(); i++){
+				if (i == userResults.size()){
+					lastcreated = driver.findElement(By.xpath("//table[@id='ctl00_ContentZone_TblResults']/tbody/tr["+i+"]/td[2]")).getText();
+				}	
+			}
+		}else{
+			elementClick("ctl00_ContentZone_tablePager_BtnLast");
+			Thread.sleep(1500);
+            tableResult = driver.findElement(By.id("ctl00_ContentZone_TblResults"));
+            userResults = tableResult.findElements(By.tagName("tr"));
+            lastcreated = driver.findElement(By.xpath("//table[@id='ctl00_ContentZone_TblResults']/tbody/tr[" + userResults.size() + "]/td[2]")).getText();
 		}
 		elementClick("ctl00_BtnLogOut");
 		Thread.sleep(500);
