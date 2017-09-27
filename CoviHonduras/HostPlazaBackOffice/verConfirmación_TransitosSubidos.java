@@ -62,8 +62,8 @@ public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 				DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 				DateFormat dateF = new SimpleDateFormat("dd/MM/yyyy");
 				Date date = new Date();			
-				dateverTransacciones = "26/09/2017";//dateF.format(date);
-				transSearch = "20170926";//dateFormat.format(date);
+				dateverTransacciones = dateF.format(date);
+				transSearch = dateFormat.format(date);
 				String connectionUrlPlaza = "jdbc:sqlserver://172.18.130.188:1433;DataBaseName=COVIHONDURAS_QA_TOLLPLAZA"; //+ "user=sa; password=lediscet";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
 				String connectionUrlHost = "jdbc:sqlserver://172.18.130.188:1433;DataBaseName=COVIHONDURAS_QA_TOLLHOST"; //+ "user=sa; password=lediscet";//" + "user=SENEGAL_QA_TOLLHOST; password=USRTOLLHOST";
 			    stmt = null;
@@ -83,8 +83,8 @@ public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 			    			}
 			    		}
 			    		if (transactions[0]==null&&transactions[1]==null){
-			    			System.out.println("No han subido tránsitos a Plaza");
-			    			fail("No han subido tránsitos a Plaza");
+			    			System.out.println("No han subido tránsitos a Plaza con fecha de hoy "+dateverTransacciones);
+			    			fail("No han subido tránsitos a Plaza con fecha de hoy "+dateverTransacciones);
 			    		}else{	
 			    			Connection conn2 = DriverManager.getConnection(connectionUrlHost, "sa", "lediscet");
 			    			stmt = conn2.createStatement();
@@ -101,8 +101,8 @@ public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 							Min1 = transactionsHIds.get(0).substring(10,12);
 							Sec1 = transactionsHIds.get(0).substring(12,14);
 				    		if (transactions[0]==null&&transactions[1]==null){
-				    			System.out.println("No han subido tránsitos a Host");
-				    			fail("No han subido tránsitos a Host");
+				    			System.out.println("No han subido tránsitos a Host con fecha de hoy "+dateverTransacciones);
+				    			fail("No han subido tránsitos a Host con fecha de hoy "+dateverTransacciones);
 				    		}else{
 				    			Thread.sleep(1000);
 				    			HostPlazaBackOffice.BOHost_VerTransacciones.verTransacciones();
