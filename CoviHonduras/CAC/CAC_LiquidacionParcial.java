@@ -35,16 +35,16 @@ public class CAC_LiquidacionParcial extends Settingsfields_File {
 }
 
 @Test
-	public void accountCloseInit() throws Exception {
+	public void accountLiquidacionParcialInit() throws Exception {
 		Thread.sleep(1000);
 		borrarArchivosTemp("E:\\workspace\\Maria_Repository\\accountClose\\attachments\\");
-		accountClose();
+		accountLiquidacionParcial();
 		Thread.sleep(1000);	
 		System.out.println("Se ha cerrado una Liquidación Parcial correctamente");
 		
 	}
 
-public static void accountClose() throws Exception {
+public static void accountLiquidacionParcial() throws Exception {
 	Actions action = new Actions(driver);
 	driver.get(CaCUrl);
 	takeScreenShot("E:\\Selenium\\","loginCACCVHPage"+timet+".jpg");
