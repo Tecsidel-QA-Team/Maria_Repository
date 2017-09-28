@@ -148,11 +148,9 @@ public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 				    				
 				    			}
 				    		}
-							System.out.println(transactionsHIds.get(1));
+							
 			    		}
-					//fis.close();
-					//fis2.close();
-					//System.setOut(old);
+
 				}catch(Exception e){
 					e.printStackTrace();
 					fail();
