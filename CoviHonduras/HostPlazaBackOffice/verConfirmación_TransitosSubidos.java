@@ -97,13 +97,13 @@ public class verConfirmación_TransitosSubidos extends Settingsfields_File {
 				    				transactionsHIds.add(transactions[i]);
 				    			}				    			
 				    		}
-				    		Hour1 = transactionsHIds.get(0).substring(8,10);
-							Min1 = transactionsHIds.get(0).substring(10,12);
-							Sec1 = transactionsHIds.get(0).substring(12,14);
 				    		if (transactions[0]==null&&transactions[1]==null){
 				    			System.out.println("No han subido tránsitos a Host con fecha de hoy "+dateverTransacciones);
 				    			fail("No han subido tránsitos a Host con fecha de hoy "+dateverTransacciones);
 				    		}else{
+				    			Hour1 = transactionsHIds.get(0).substring(8,10);
+								Min1 = transactionsHIds.get(0).substring(10,12);
+								Sec1 = transactionsHIds.get(0).substring(12,14);
 				    			System.out.println("En Host han subido hoy: "+transactionsPIds.size()/2);
 				    			Thread.sleep(1000);
 				    			HostPlazaBackOffice.BOHost_VerTransacciones.verTransacciones();
