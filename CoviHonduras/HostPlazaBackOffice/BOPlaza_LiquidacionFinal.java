@@ -1,4 +1,4 @@
-package CAC;
+package HostPlazaBackOffice;
 
 import static org.junit.Assert.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import coviHondurasSettingFile.Settingsfields_File;
 
-public class CAC_LiquidacionFinal extends Settingsfields_File {
+public class BOPlaza_LiquidacionFinal extends Settingsfields_File {
 	
 			@Before
 			public void setUp() throws Exception{
@@ -35,26 +35,26 @@ public class CAC_LiquidacionFinal extends Settingsfields_File {
 }
 
 @Test
-	public void accountLiquidacionParcialInit() throws Exception {
+	public void plazaAccountLiquidacionFinalInit() throws Exception {
 		Thread.sleep(1000);
 		borrarArchivosTemp("E:\\workspace\\Maria_Repository\\LiquidacionFinal\\attachments\\");
-		accountLiquidacionParcial();
+		plazaAccountLiquidacionFinal();
 		Thread.sleep(1000);	
 		System.out.println("Se ha cerrado una Liquidación Final correctamente");
 		
 	}
 
-public static void accountLiquidacionParcial() throws Exception {
+public static void plazaAccountLiquidacionFinal() throws Exception {
 	Actions action = new Actions(driver);
-	driver.get(CaCUrl);
-	takeScreenShot("E:\\Selenium\\","loginCACCVHPage"+timet+".jpg");
-	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidacionFinal\\attachments\\","loginCACCVHPage.jpg");
+	driver.get(BoPlazaUrl);
+	takeScreenShot("E:\\Selenium\\","loginBOPlazaCVHPage"+timet+".jpg");
+	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidacionFinal\\attachments\\","loginBOPlazaCVHPage.jpg");
 	driver.findElement(By.id(loginField)).sendKeys("00001");
 	driver.findElement(By.id(passField)).sendKeys("00001");
 	driver.findElement(By.id(loginButton)).click();
 	Thread.sleep(1000);
-	takeScreenShot("E:\\Selenium\\","homeCACCVHPage"+timet+".jpg");
-	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónFinal\\attachments\\","homeCACCVHPage.jpg");
+	takeScreenShot("E:\\Selenium\\","homeBOPlazaCVHPage"+timet+".jpg");
+	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónFinal\\attachments\\","homeBOPlazaCVHPage.jpg");
 	BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
 	Thread.sleep(2000);					
 	action.clickAndHold(driver.findElement(By.linkText("Gestión de cobrador"))).build().perform();
@@ -87,17 +87,11 @@ public static void accountLiquidacionParcial() throws Exception {
 	Thread.sleep(500);
 	driver.findElement(By.id("ctl00_ContentZone_NumberCASH01C5_1")).sendKeys(ranNumbr(1,2000)+"");
 	Thread.sleep(500);
-	driver.findElement(By.id("ctl00_ContentZone_NumberCH02201")).sendKeys(ranNumbr(1,5)+"");
-	action.sendKeys(driver.findElement(By.id("ctl00_ContentZone_NumberCH02202_txt_formated")),ranNumbr(10000,99999)+"").build().perform();
-	Thread.sleep(500);
 	driver.findElement(By.id("ctl00_ContentZone_NumberCD201")).sendKeys(ranNumbr(1,5)+"");
 	action.sendKeys(driver.findElement(By.id("ctl00_ContentZone_NumberCD202_txt_formated")),ranNumbr(10000,99999)+"").build().perform();
-	Thread.sleep(500);
-	driver.findElement(By.id("ctl00_ContentZone_NumberBD201")).sendKeys(ranNumbr(1,5)+"");
-	action.sendKeys(driver.findElement(By.id("ctl00_ContentZone_NumberBD202_txt_formated")),ranNumbr(10000,99999)+"").build().perform();
-	Thread.sleep(1000);
-	takeScreenShot("E:\\Selenium\\","LiquidacionParcialPage"+timet+".jpg");
-	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónFinal\\attachments\\","LiquidacionParcialPage.jpg");
+	Thread.sleep(500);	
+	takeScreenShot("E:\\Selenium\\","LiquidacionFinalPage"+timet+".jpg");
+	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónFinal\\attachments\\","LiquidacionFinalPage.jpg");
 	elementClick("ctl00_ButtonsZone_BtnSubmit_IB_Label");
 	Thread.sleep(500);
 	if (isAlertPresent()){

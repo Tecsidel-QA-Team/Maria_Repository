@@ -1,4 +1,4 @@
-package CAC;
+package HostPlazaBackOffice;
 
 import static org.junit.Assert.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import coviHondurasSettingFile.Settingsfields_File;
 
-public class CAC_LiquidacionFinal extends Settingsfields_File {
+public class BOPlaza_LiquidacionParcial extends Settingsfields_File {
 	
 			@Before
 			public void setUp() throws Exception{
@@ -37,32 +37,30 @@ public class CAC_LiquidacionFinal extends Settingsfields_File {
 @Test
 	public void accountLiquidacionParcialInit() throws Exception {
 		Thread.sleep(1000);
-		borrarArchivosTemp("E:\\workspace\\Maria_Repository\\LiquidacionFinal\\attachments\\");
+		borrarArchivosTemp("E:\\workspace\\Maria_Repository\\LiquidacionParcial\\attachments\\");
 		accountLiquidacionParcial();
 		Thread.sleep(1000);	
-		System.out.println("Se ha cerrado una Liquidación Final correctamente");
+		System.out.println("Se ha cerrado una Liquidación Parcial correctamente");
 		
 	}
 
 public static void accountLiquidacionParcial() throws Exception {
 	Actions action = new Actions(driver);
 	driver.get(CaCUrl);
-	takeScreenShot("E:\\Selenium\\","loginCACCVHPage"+timet+".jpg");
-	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidacionFinal\\attachments\\","loginCACCVHPage.jpg");
+	takeScreenShot("E:\\Selenium\\","loginBOPlazaCVHPage"+timet+".jpg");
+	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidacionParcial\\attachments\\","loginBOPlazaCVHPage.jpg");
 	driver.findElement(By.id(loginField)).sendKeys("00001");
 	driver.findElement(By.id(passField)).sendKeys("00001");
 	driver.findElement(By.id(loginButton)).click();
 	Thread.sleep(1000);
-	takeScreenShot("E:\\Selenium\\","homeCACCVHPage"+timet+".jpg");
-	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónFinal\\attachments\\","homeCACCVHPage.jpg");
+	takeScreenShot("E:\\Selenium\\","homeBOPlazaCVHPage"+timet+".jpg");
+	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónParcial\\attachments\\","homeBOPlazaCVHPage.jpg");
 	BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
 	Thread.sleep(2000);					
 	action.clickAndHold(driver.findElement(By.linkText("Gestión de cobrador"))).build().perform();
 	Thread.sleep(1000);
-	driver.findElement(By.linkText("Liquidación final")).click();
+	driver.findElement(By.linkText("Liquidación parcial")).click();
 	Thread.sleep(2000);
-	selectDropDown("ctl00_ContentZone_cmb_shiftGroup_cmb_dropdown");
-	Thread.sleep(500);
 	driver.findElement(By.id("ctl00_ContentZone_NumberCASH01N50000_1")).sendKeys(ranNumbr(1,4)+"");
 	Thread.sleep(500);
 	driver.findElement(By.id("ctl00_ContentZone_NumberCASH01N10000_1")).sendKeys(ranNumbr(1,4)+"");
@@ -97,26 +95,22 @@ public static void accountLiquidacionParcial() throws Exception {
 	action.sendKeys(driver.findElement(By.id("ctl00_ContentZone_NumberBD202_txt_formated")),ranNumbr(10000,99999)+"").build().perform();
 	Thread.sleep(1000);
 	takeScreenShot("E:\\Selenium\\","LiquidacionParcialPage"+timet+".jpg");
-	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónFinal\\attachments\\","LiquidacionParcialPage.jpg");
+	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónParcial\\attachments\\","LiquidacionParcialPage.jpg");
 	elementClick("ctl00_ButtonsZone_BtnSubmit_IB_Label");
 	Thread.sleep(500);
 	if (isAlertPresent()){
 		driver.switchTo().alert().accept();
-		Thread.sleep(2000);
-	}
-	if (isAlertPresent()){
-		driver.switchTo().alert().accept();
-		Thread.sleep(12000);
+		Thread.sleep(6000);
 	}
 	takeScreenShot("E:\\Selenium\\","LiquidacionInvoice"+timet+".jpg");
-	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónFinal\\attachments\\","LiquidacionInvoice.jpg");
+	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónParcial\\attachments\\","LiquidacionInvoice.jpg");
 	Thread.sleep(1000);
 	}
 
-	public static boolean isAlertPresent(){
-		driver.switchTo().alert();
-		return true;
-	}
+		public static boolean isAlertPresent(){
+				driver.switchTo().alert();
+				return true;
+		}
 
 }		
 	
