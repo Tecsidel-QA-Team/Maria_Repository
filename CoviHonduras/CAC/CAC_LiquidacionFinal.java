@@ -106,7 +106,7 @@ public static void accountLiquidacionParcial() throws Exception {
 	}
 	if (isAlertPresent()){
 		driver.switchTo().alert().accept();
-		Thread.sleep(8000);
+		Thread.sleep(12000);
 	}
 	takeScreenShot("E:\\Selenium\\","LiquidacionInvoice"+timet+".jpg");
 	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónParcial\\attachments\\","LiquidacionInvoice.jpg");
