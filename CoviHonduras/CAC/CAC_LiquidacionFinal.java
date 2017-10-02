@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import coviHondurasSettingFile.Settingsfields_File;
 
-public class CAC_LiquidacionParcial extends Settingsfields_File {
+public class CAC_LiquidacionFinal extends Settingsfields_File {
 	
 			@Before
 			public void setUp() throws Exception{
@@ -40,7 +40,7 @@ public class CAC_LiquidacionParcial extends Settingsfields_File {
 		borrarArchivosTemp("E:\\workspace\\Maria_Repository\\accountClose\\attachments\\");
 		accountLiquidacionParcial();
 		Thread.sleep(1000);	
-		System.out.println("Se ha cerrado una Liquidación Parcial correctamente");
+		System.out.println("Se ha cerrado una Liquidación Final correctamente");
 		
 	}
 
@@ -59,8 +59,10 @@ public static void accountLiquidacionParcial() throws Exception {
 	Thread.sleep(2000);					
 	action.clickAndHold(driver.findElement(By.linkText("Gestión de cobrador"))).build().perform();
 	Thread.sleep(1000);
-	driver.findElement(By.linkText("Liquidación parcial")).click();
+	driver.findElement(By.linkText("Liquidación final")).click();
 	Thread.sleep(2000);
+	selectDropDown("ctl00_ContentZone_cmb_shiftGroup_cmb_dropdown");
+	Thread.sleep(500);
 	driver.findElement(By.id("ctl00_ContentZone_NumberCASH01N50000_1")).sendKeys(ranNumbr(1,4)+"");
 	Thread.sleep(500);
 	driver.findElement(By.id("ctl00_ContentZone_NumberCASH01N10000_1")).sendKeys(ranNumbr(1,4)+"");
@@ -100,17 +102,21 @@ public static void accountLiquidacionParcial() throws Exception {
 	Thread.sleep(500);
 	if (isAlertPresent()){
 		driver.switchTo().alert().accept();
-		Thread.sleep(6000);
+		Thread.sleep(2000);
+	}
+	if (isAlertPresent()){
+		driver.switchTo().alert().accept();
+		Thread.sleep(8000);
 	}
 	takeScreenShot("E:\\Selenium\\","LiquidacionInvoice"+timet+".jpg");
 	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónParcial\\attachments\\","LiquidacionInvoice.jpg");
 	Thread.sleep(1000);
 	}
 
-		public static boolean isAlertPresent(){
-				driver.switchTo().alert();
-				return true;
-		}
+	public static boolean isAlertPresent(){
+		driver.switchTo().alert();
+		return true;
+	}
 
 }		
 	
