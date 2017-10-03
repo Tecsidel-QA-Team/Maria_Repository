@@ -67,9 +67,10 @@ public void hostTransacciones() throws Exception {
 		takeScreenShot("E:\\Selenium\\","verTransaccionesResults"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_verTransacciones\\attachments\\","verTransaccionesResults.jpg");
 		Thread.sleep(1000);
-		String elementsFound = driver.findElement(By.id("lbl_showing")).getText();				
+		String elementsFound = driver.findElement(By.id("lbl_showing")).getText();		
+		
 		Thread.sleep(1500);
-		System.out.println("Busqueda Completa: "+ elementsFound);
+		System.out.println("Busqueda Completa: Hay "+ elementsFound.substring(20)+" transacciones encontradas");
 		System.out.println("Pruebas hechas en la versión del MCS de CoviHonduras: "+mcsVer);
 		Thread.sleep(1000);					
 	}catch(Exception e){

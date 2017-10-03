@@ -11,7 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-public class MCS_alarmaBusqueda extends Settingsfields_File{
+public class MCS_cambiarModoMarquesina extends Settingsfields_File{
 	
 			@Before
 			public void setUp() throws Exception{
@@ -37,27 +37,43 @@ public class MCS_alarmaBusqueda extends Settingsfields_File{
 }
 
 @Test
-public void alarmaBusqueda() throws Exception {
-	borrarArchivosTemp("E:\\workspace\\Maria_Repository\\MCS_alarmaBusqueda\\attachments\\");
+public void cambiarMarquesinaVia() throws Exception {
+	borrarArchivosTemp("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\");
 	try{
 		driver.get(MCSUrl);
 		Thread.sleep(1000);
 		takeScreenShot("E:\\Selenium\\","loginMCSCVHPage"+timet+".jpg");
-		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_alarmaBusqueda\\attachments\\","loginMCSCVHPage.jpg");
+		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","loginMCSCVHPage.jpg");
 		String mcsVer = driver.findElement(By.id(mcsVersion)).getText();
 		driver.findElement(By.id("txt_login")).sendKeys("00001");
 		driver.findElement(By.id("txt_password")).sendKeys("00001");
 		driver.findElement(By.id("btn_login")).click();
 		Thread.sleep(1000);
 		takeScreenShot("E:\\Selenium\\","homeMCSCVHPage"+timet+".jpg");
-		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_alarmaBusqueda\\attachments\\","homeMCSCVHPage.jpg");	
+		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","homeMCSCVHPage.jpg");	
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//div[@onclick=\"dropdownmenu(this, event, menu3, '250px')\"]")).click();
-		driver.findElement(By.linkText("Ver alarmas")).click();
+		//driver.switchTo().frame(1);
+		driver.findElement(By.id("lane_name_link_26")).click();
 		Thread.sleep(1000);
-		driver.switchTo().frame(0);
-		takeScreenShot("E:\\Selenium\\","verAlarmasPage"+timet+".jpg");
-		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_alarmaBusqueda\\attachments\\","verAlarmasPage.jpg");
+		driver.findElement(By.xpath("//*[@id='lyr_menu']/div[2]")).click();
+		Thread.sleep(600);
+		driver.findElement(By.linkText("Cambiar señal de marquesina")).click();
+		Thread.sleep(600);
+		if (ranNumbr(0,1)==1){
+			driver.findElement(By.linkText("Aspa")).click();
+		}else{
+			driver.findElement(By.linkText("Flecha")).click();
+		}
+		takeScreenShot("E:\\Selenium\\","DetalleViaPage"+timet+".jpg");
+		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","DetalleViaPage.jpg");
+		String operationWindow = driver.findElement(By.id("titlebar")).getText();//driver.findElement(By.xpath("//*[@id='lbl_alert_title']")).getText();
+		operationWindow = operationWindow.trim();
+		if (operationWindow.equals("Error")){
+			String errormessage = driver.findElement(By.id("lbl_message")).getText();
+			System.out.println(operationWindow+": "+errormessage);
+			fail(errormessage);
+			return;
+		}			
 		Thread.sleep(500);
 		new Select(driver.findElement(By.id("cbDia1"))).selectByVisibleText("01");
 		new Select(driver.findElement(By.id("cbMes1"))).selectByVisibleText("ene");
@@ -65,8 +81,8 @@ public void alarmaBusqueda() throws Exception {
 		Thread.sleep(1000);		
 		driver.findElement(By.id("btn_search")).click();
 		Thread.sleep(2000);
-		takeScreenShot("E:\\Selenium\\","verAlarmasResults"+timet+".jpg");
-		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_alarmaBusqueda\\attachments\\","verAlarmasResults.jpg");
+		takeScreenShot("E:\\Selenium\\","cambiarMarquesinaResults"+timet+".jpg");
+		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","cambiarMarquesinaResults.jpg");
 		Thread.sleep(1000);
 		String elementsFound = driver.findElement(By.id("lbl_showing")).getText();				
 		Thread.sleep(1500);
@@ -74,6 +90,7 @@ public void alarmaBusqueda() throws Exception {
 		System.out.println("Pruebas hechas en la versión del MCS de CoviHonduras: "+mcsVer);
 		Thread.sleep(1000);					
 	}catch(Exception e){
+		System.out.println(e.getMessage());
 		e.printStackTrace();
 		fail();
 	}

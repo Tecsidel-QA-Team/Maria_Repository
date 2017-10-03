@@ -348,6 +348,7 @@ public static void accountReload() throws Exception {
 		elementClick("ctl00_ContentZone_btn_stolen");
 		Thread.sleep(1500);
 		reloadConfirmation();		
+		
 	}
 	
 	
