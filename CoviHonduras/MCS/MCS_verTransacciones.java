@@ -37,8 +37,8 @@ public class MCS_verTransacciones extends Settingsfields_File{
 }
 
 @Test
-public void hostTransacciones() throws Exception {
-	borrarArchivosTemp("E:\\workspace\\Maria_Repository\\MCS_alarmaBusqueda\\attachments\\");
+public void verTransacciones() throws Exception {
+	borrarArchivosTemp("E:\\workspace\\Maria_Repository\\MCS_verTransacciones\\attachments\\");
 	try{
 		driver.get(MCSUrl);
 		Thread.sleep(1000);
