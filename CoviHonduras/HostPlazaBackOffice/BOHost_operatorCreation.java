@@ -149,7 +149,7 @@ public void crearOperadores() throws Exception {
 		String enviarViaLbl = driver.findElement(By.id("ctl00_LblError")).getText();		
 		if (enviarViaLbl.contains("OK")){
 			enviarViaVer = enviarViaLbl.substring(41).replace("'", "");
-			System.out.println("La telecarga de Operadores se ha enviado a Vía");
+			System.out.println("La telecarga de Operadores se ha enviado a Vía con la versión "+enviarViaVer);
 		}else{
 			fail("Hay un error en envair telecargas a vía");
 		}
