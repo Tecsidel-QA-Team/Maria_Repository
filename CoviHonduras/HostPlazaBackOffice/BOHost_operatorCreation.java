@@ -99,7 +99,7 @@ public void crearOperadores() throws Exception {
 		Thread.sleep(100);
 		driver.findElement(By.id("ctl00_ContentZone_txt_country_box_data")).sendKeys("España");
 		Thread.sleep(100);
-		driver.findElement(By.id("ctl00_ContentZone_email_box_data")).sendKeys(nameOp[userSel].toLowerCase()+lastNameOp[userSel].toLowerCase()+"@tecsidel.es@");
+		driver.findElement(By.id("ctl00_ContentZone_email_box_data")).sendKeys(nameOp[userSel].toLowerCase()+lastNameOp[userSel].toLowerCase()+"@tecsidel.es");
 		driver.findElement(By.id("ctl00_ContentZone_txt_phone_box_data")).sendKeys(workPhone1[userSel]);
 		selectDropDown("ctl00_ContentZone_group_cmb_dropdown");
 		Thread.sleep(100);
@@ -162,7 +162,7 @@ public void crearOperadores() throws Exception {
 		driver.findElement(By.id(loginField)).sendKeys(lastcreated);
 		driver.findElement(By.id(passField)).sendKeys("00001");
 		driver.findElement(By.id(loginButton)).click();
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 		System.out.println("Se ha Creado el operador "+lastcreated+" con la contraseaña: 00001"+ " en el grupo de "+operatorG.substring(04));
 		System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+BOVersion.substring(17));
 		takeScreenShot("E:\\Selenium\\","userCreatedscreenHome"+timet+".jpg");
