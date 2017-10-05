@@ -164,7 +164,7 @@ public void crearOperadores() throws Exception {
 		driver.findElement(By.id(loginButton)).click();
 		Thread.sleep(10000);
 		System.out.println("Se ha Creado el operador "+lastcreated+" con la contraseaña: 00001"+ " en el grupo de "+operatorG.substring(04));
-		System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+BOVersion.substring(17));
+		System.out.println("Se ha probado en la versión del BO Host: " + BOVersion.substring(1,16)+" y Host Manager: "+BOVersion.substring(18));
 		takeScreenShot("E:\\Selenium\\","userCreatedscreenHome"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\BOHost_crearOperadores\\attachments\\","userCreatedscreenHome.jpg");
 		Thread.sleep(6000);
