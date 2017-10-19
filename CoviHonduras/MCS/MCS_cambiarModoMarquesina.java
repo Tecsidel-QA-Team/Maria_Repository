@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class MCS_cambiarModoMarquesina extends Settingsfields_File{
+			private static String ModoMar;
 	
 			@Before
 			public void setUp() throws Exception{
@@ -52,17 +53,18 @@ public void cambiarMarquesinaVia() throws Exception {
 		takeScreenShot("E:\\Selenium\\","homeMCSCVHPage"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","homeMCSCVHPage.jpg");	
 		Thread.sleep(2000);
-		//driver.switchTo().frame(1);
 		driver.findElement(By.id("lane_name_link_26")).click();
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//*[@id='lyr_menu']/div[2]")).click();
 		Thread.sleep(600);
 		driver.findElement(By.linkText("Cambiar señal de marquesina")).click();
 		Thread.sleep(600);
-		if (ranNumbr(0,1)==1){
-			driver.findElement(By.linkText("Aspa")).click();
+		if (ranNumbr(0,1)==0){
+			ModoMar = "Aspa";
+			driver.findElement(By.linkText(ModoMar)).click();
 		}else{
-			driver.findElement(By.linkText("Flecha")).click();
+			ModoMar = "Flecha";
+			driver.findElement(By.linkText(ModoMar)).click();
 		}
 		takeScreenShot("E:\\Selenium\\","DetalleViaPage"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","DetalleViaPage.jpg");
@@ -73,20 +75,12 @@ public void cambiarMarquesinaVia() throws Exception {
 			System.out.println(operationWindow+": "+errormessage);
 			fail(errormessage);
 			return;
-		}			
-		Thread.sleep(500);
-		new Select(driver.findElement(By.id("cbDia1"))).selectByVisibleText("01");
-		new Select(driver.findElement(By.id("cbMes1"))).selectByVisibleText("ene");
-		selectDropDown("cmb_type");
-		Thread.sleep(1000);		
-		driver.findElement(By.id("btn_search")).click();
-		Thread.sleep(2000);
-		takeScreenShot("E:\\Selenium\\","cambiarMarquesinaResults"+timet+".jpg");
-		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","cambiarMarquesinaResults.jpg");
+		}					
 		Thread.sleep(1000);
-		String elementsFound = driver.findElement(By.id("lbl_showing")).getText();				
-		Thread.sleep(1500);
-		System.out.println("Busqueda Completa: "+ elementsFound);
+		String confirmMessage = driver.findElement(By.id("lbl_message")).getText();
+		takeScreenShot("E:\\Selenium\\","cambiarMarquesinaResults"+timet+".jpg");
+		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","cambiarMarquesinaResults.jpg");		
+		System.out.println(operationWindow+": "+confirmMessage+" "+ModoMar);	
 		System.out.println("Pruebas hechas en la versión del MCS de CoviHonduras: "+mcsVer);
 		Thread.sleep(1000);					
 	}catch(Exception e){

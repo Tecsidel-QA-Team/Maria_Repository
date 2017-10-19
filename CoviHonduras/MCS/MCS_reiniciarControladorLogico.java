@@ -72,19 +72,11 @@ public void reiniciarControladorLogico() throws Exception {
 			fail(errormessage);
 			return;
 		}			
-		Thread.sleep(500);
-		new Select(driver.findElement(By.id("cbDia1"))).selectByVisibleText("01");
-		new Select(driver.findElement(By.id("cbMes1"))).selectByVisibleText("ene");
-		selectDropDown("cmb_type");
-		Thread.sleep(1000);		
-		driver.findElement(By.id("btn_search")).click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
+		String confirmMessage = driver.findElement(By.id("lbl_message")).getText();	
 		takeScreenShot("E:\\Selenium\\","reiniciarControladorResults"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","reiniciarControladorResults.jpg");
-		Thread.sleep(1000);
-		String elementsFound = driver.findElement(By.id("lbl_showing")).getText();				
-		Thread.sleep(1500);
-		System.out.println("Busqueda Completa: "+ elementsFound);
+		System.out.println(operationWindow+": "+confirmMessage);
 		System.out.println("Pruebas hechas en la versión del MCS de CoviHonduras: "+mcsVer);
 		Thread.sleep(1000);					
 	}catch(Exception e){

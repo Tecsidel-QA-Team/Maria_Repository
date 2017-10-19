@@ -75,20 +75,12 @@ public void cerrarVia() throws Exception {
 			System.out.println(operationWindow+": "+errormessage);
 			fail(errormessage);
 			return;
-		}			
-		Thread.sleep(500);
-		new Select(driver.findElement(By.id("cbDia1"))).selectByVisibleText("01");
-		new Select(driver.findElement(By.id("cbMes1"))).selectByVisibleText("ene");
-		selectDropDown("cmb_type");
-		Thread.sleep(1000);		
-		driver.findElement(By.id("btn_search")).click();
-		Thread.sleep(2000);
-		takeScreenShot("E:\\Selenium\\","cerrarViaResults"+timet+".jpg");
-		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","cerrarViaResults.jpg");
+		}					
 		Thread.sleep(1000);
-		String elementsFound = driver.findElement(By.id("lbl_showing")).getText();				
-		Thread.sleep(1500);
-		System.out.println("Busqueda Completa: "+ elementsFound);
+		String confirmMessage = driver.findElement(By.id("lbl_message")).getText();		
+		takeScreenShot("E:\\Selenium\\","cerrarViaResults"+timet+".jpg");
+		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","cerrarViaResults.jpg");		
+		System.out.println(operationWindow+": "+confirmMessage);
 		System.out.println("Pruebas hechas en la versión del MCS de CoviHonduras: "+mcsVer);
 		Thread.sleep(1000);					
 	}catch(Exception e){
