@@ -43,6 +43,9 @@ public class CAC_accountCreationWithVehicle extends Settingsfields_File {
 		elementClick("ctl00_ButtonsZone_BtnValidate_IB_Label");// Guardar Cuenta con el botón
 		Thread.sleep(2000);
 		accountCreationWithVehicle();
+		Thread.sleep(1000);
+		takeScreenShot("E:\\Selenium\\","accountCreated"+timet+".jpg");
+		takeScreenShot("E:\\workspace\\Maria_Repository\\accountCreationVehicle\\attachments\\","accountCreated.jpg");
 		System.out.println("Se ha creado la cuenta: "+accountNumbr.substring(7,16)+" correctamente y con el vehículo creado con la matricula: "+matriNu);
 		System.out.println("Se ha probado en la versión del CAC BO: " + BOVersion.substring(1,16)+" y CAC Manager: "+BOVersion.substring(17));
 		
