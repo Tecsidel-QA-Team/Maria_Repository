@@ -38,13 +38,13 @@ public class CAC_LiquidacionFinal extends Settingsfields_File {
 	public void accountLiquidacionParcialInit() throws Exception {
 		Thread.sleep(1000);
 		borrarArchivosTemp("E:\\workspace\\Maria_Repository\\LiquidacionFinal\\attachments\\");
-		accountLiquidacionParcial();
+		accountLiquidacionFinal();
 		Thread.sleep(1000);	
 		System.out.println("Se ha cerrado una Liquidación Final correctamente");
 		
 	}
 
-public static void accountLiquidacionParcial() throws Exception {
+public static void accountLiquidacionFinal() throws Exception {
 	Actions action = new Actions(driver);
 	driver.get(CaCUrl);
 	takeScreenShot("E:\\Selenium\\","loginCACCVHPage"+timet+".jpg");
