@@ -42,13 +42,13 @@ public class CAC_assignVehicleToExistingAccount extends Settingsfields_File {
 		Thread.sleep(1000);
 		borrarArchivosTemp("E:\\workspace\\Maria_Repository\\assigningVehicleToAccount\\attachments\\");
 		assigningVehcleToExistingAccount();
-		Thread.sleep(1000);
-		CAC.CAC_accountCreationWithVehicle.accountCreationWithVehicle();
 		Thread.sleep(200);
 		if (accountClosed){
 			System.out.println("No se puede asignar un Vehículo a la cuenta "+accountNumbr.substring(7, 16)+" porque está cerrada");
 			fail("No se puede asignar un Vehículo a la cuenta "+accountNumbr.substring(7, 16)+" porque está cerrada");
 		}
+		Thread.sleep(1000);
+		CAC.CAC_accountCreationWithVehicle.accountCreationWithVehicle();		
 		Thread.sleep(1000);
 		System.out.println("Se le asignado el vehículo con la matrícula " +matriNu+" a la cuenta "+accountNumbr.substring(7, 16)+" correctamente");
 		System.out.println("Se ha probado en la versión del CAC BO: " + BOVersion.substring(1,16)+" y CAC Manager: "+BOVersion.substring(17));
