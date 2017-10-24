@@ -362,13 +362,15 @@ public static void accountReload() throws Exception {
 		takeScreenShot("E:\\Selenium\\","PayDetailPage"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\ReloadCreation\\attachments\\","PayDetailPage.jpg");
 		if (tablere.size()>1){
-			String reload = driver.findElement(By.xpath("//*[@id='ctl00_ContentZone_CtNumbers_m_table_fees']/tbody/tr[2]/td[1]")).getText();
-			if (reload.contains(reloadDescription)){
-				reloadCreated = true;
-			}
-			else{
-				reloadCreated = false;
-				return;
+			for (int i = 2; i <=tablere.size();i++){
+				String reload = driver.findElement(By.xpath("//*[@id='ctl00_ContentZone_CtNumbers_m_table_fees']/tbody/tr["+i+"]/td[1]")).getText();
+				if (reload.contains(reloadDescription)){
+					reloadCreated = true;
+				}
+				else{
+					reloadCreated = false;
+					return;
+				}
 			}
 		}else{
 			reloadCreated = false;
