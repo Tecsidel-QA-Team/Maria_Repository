@@ -96,7 +96,7 @@ public static void accountReload() throws Exception {
 	takeScreenShot("E:\\workspace\\Maria_Repository\\ReloadCreation\\attachments\\","ReloadCreatioPage.jpg");
 	Thread.sleep(500);
 	selectDropDown("ctl00_ContentZone_cmb_type_cmb_dropdown");
-	new Select(driver.findElement(By.id("ctl00_ContentZone_cmb_type_cmb_dropdown"))).selectByIndex(3);
+	new Select(driver.findElement(By.id("ctl00_ContentZone_cmb_type_cmb_dropdown"))).selectByIndex(ranNumbr(0,3));
 	Thread.sleep(500);
 	applicationType = new Select(driver.findElement(By.id("ctl00_ContentZone_cmb_type_cmb_dropdown"))).getFirstSelectedOption().getText();	
 	applicationTypeText = applicationType+"-"+timet.substring(4, 14);
