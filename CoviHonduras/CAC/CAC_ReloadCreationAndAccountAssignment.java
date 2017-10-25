@@ -103,7 +103,7 @@ public static void accountReload() throws Exception {
 	Thread.sleep(500);
 	driver.findElement(By.id("ctl00_ContentZone_txt_name_box_data")).sendKeys(applicationTypeText);
 	Thread.sleep(2000);
-	reloadDescription = "Recargo para "+applicationType;			
+	reloadDescription = "Recargo para "+applicationTypeText;			
 	driver.findElement(By.id("ctl00_ContentZone_txt_description_box_data")).sendKeys(reloadDescription);
 	if (!applicationType.equals("Creación de cuenta")){
 		selectDropDown("ctl00_ContentZone_cmb_applicationType_cmb_dropdown");
