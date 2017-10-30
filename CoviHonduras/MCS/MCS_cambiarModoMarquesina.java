@@ -64,7 +64,8 @@ public void cambiarMarquesinaVia() throws Exception {
 			driver.findElement(By.linkText(ModoMar)).click();
 		}else{
 			ModoMar = "Flecha";
-			driver.findElement(By.linkText(ModoMar)).click();
+			elementClick("btn_showChangeLaneSignWindow_arrow");
+			
 		}
 		takeScreenShot("E:\\Selenium\\","DetalleViaPage"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","DetalleViaPage.jpg");
@@ -80,7 +81,7 @@ public void cambiarMarquesinaVia() throws Exception {
 		String confirmMessage = driver.findElement(By.id("lbl_message")).getText();
 		takeScreenShot("E:\\Selenium\\","cambiarMarquesinaResults"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","cambiarMarquesinaResults.jpg");		
-		System.out.println(operationWindow+": "+confirmMessage+" "+ModoMar);	
+		System.out.println(operationWindow+": "+confirmMessage+" a "+ModoMar);	
 		System.out.println("Pruebas hechas en la versión del MCS de CoviHonduras: "+mcsVer);
 		Thread.sleep(1000);					
 	}catch(Exception e){
