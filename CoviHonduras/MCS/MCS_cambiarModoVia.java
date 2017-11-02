@@ -60,10 +60,10 @@ public void cambiarModoVia() throws Exception {
 		driver.findElement(By.linkText("Cambiar el modo de la vía")).click();
 		Thread.sleep(600);		
 		if (ranNumbr(0,1)==1){
-			Modo = "Automática";
+			Modo = "Mixta";
 			driver.findElement(By.linkText("Automática")).click();
 		}else{
-			driver.findElement(By.linkText("Mixta")).click();
+			elementclick("btn_showChangeLaneSignWindow_arrow")).click();
 			Modo = "Mixta";
 		}
 		takeScreenShot("E:\\Selenium\\","DetalleViaPage"+timet+".jpg");
@@ -80,7 +80,8 @@ public void cambiarModoVia() throws Exception {
 		String confirmMessage = driver.findElement(By.id("lbl_message")).getText();
 		takeScreenShot("E:\\Selenium\\","cambiarModoResults"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\MCS_application\\attachments\\","cambiarModoResults.jpg");
-		System.out.println(operationWindow+": "+confirmMessage+" "+Modo);	
+		String operationWindow2 =  driver.findElement(By.id("lbl_alert_title")).getText();
+		System.out.println(operationWindow2+": "+confirmMessage+" "+Modo);	
 		System.out.println("Pruebas hechas en la versión del MCS de CoviHonduras: "+mcsVer);		
 		Thread.sleep(1000);						
 	}catch(Exception e){
