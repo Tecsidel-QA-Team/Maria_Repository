@@ -1,7 +1,6 @@
 package MCS;
 
 import static org.junit.Assert.*;
-import org.openqa.selenium.support.ui.Select;
 import coviHondurasSettingFile.Settingsfields_File;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
