@@ -63,7 +63,7 @@ public void cambiarModoVia() throws Exception {
 			Modo = "Mixta";
 			driver.findElement(By.linkText("Automática")).click();
 		}else{
-			elementclick("btn_showChangeLaneSignWindow_arrow")).click();
+			elementClick("btn_showChangeLaneSignWindow_arrow");
 			Modo = "Mixta";
 		}
 		takeScreenShot("E:\\Selenium\\","DetalleViaPage"+timet+".jpg");
