@@ -83,11 +83,15 @@ public void simulacionPasoVia() throws Exception {
 		fail();
 	}
 }	
-		public static boolean isAlertPresent() throws Exception
-		{
+	public static boolean isAlertPresent() throws Exception{
+		try{
 			driver.switchTo().alert();
 			return true;
+		}catch (Exception e){
+			return false;
 		}
+
+	}
 		
 }
 		

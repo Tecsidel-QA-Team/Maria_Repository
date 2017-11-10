@@ -85,13 +85,15 @@ public void abrirVia() throws Exception {
 		fail();
 	}
 }	
-		public static boolean isAlertPresent() throws Exception
-		{
-			driver.switchTo().alert();
-			return true;
+		public static boolean isAlertPresent() throws Exception{
+			try{
+				driver.switchTo().alert();
+				return true;
+			}catch (Exception e){
+				return false;
+			}
+		
 		}
 		
 }
-		
-      	
 		
