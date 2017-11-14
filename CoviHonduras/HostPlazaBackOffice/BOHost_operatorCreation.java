@@ -130,16 +130,24 @@ public void crearOperadores() throws Exception {
 		takeScreenShot("E:\\workspace\\Maria_Repository\\CAC_crearOperadores\\attachments\\","userCreated.jpg");
 		tableResult = driver.findElement(By.id("ctl00_ContentZone_TblResults"));
 		userResults = tableResult.findElements(By.tagName("tr"));
-		if (userResults.size()>15){
-			elementClick("ctl00_ContentZone_tablePager_BtnLast");
-			Thread.sleep(500);
-			tableResult = driver.findElement(By.id("ctl00_ContentZone_TblResults"));
-			userResults = tableResult.findElements(By.tagName("tr"));
-		}
-		for (int i = 1; i <= userResults.size(); i++){
+		if (userResults.size()<14){
+			for (int i = 1; i <= userResults.size(); i++){
 				if (i == userResults.size()){
 					lastcreated = driver.findElement(By.xpath("//table[@id='ctl00_ContentZone_TblResults']/tbody/tr["+i+"]/td[2]")).getText();
-			}	
+				}	
+			}
+		}else{
+			elementClick("ctl00_ContentZone_tablePager_BtnLast");
+			Thread.sleep(1500);
+            tableResult = driver.findElement(By.id("ctl00_ContentZone_TblResults"));
+            userResults = tableResult.findElements(By.tagName("tr"));
+            lastcreated = driver.findElement(By.xpath("//table[@id='ctl00_ContentZone_TblResults']/tbody/tr[" + userResults.size() + "]/td[2]")).getText();
+            for (int i = 1; i <= userResults.size(); i++){
+				if (i == userResults.size()){
+					lastcreated = driver.findElement(By.xpath("//table[@id='ctl00_ContentZone_TblResults']/tbody/tr["+i+"]/td[2]")).getText();
+				}	
+			
+            }
 		}
 		elementClick("ctl00_ButtonsZone_BtnDownload_IB_Label");
 		if (isAlertPresent()){
