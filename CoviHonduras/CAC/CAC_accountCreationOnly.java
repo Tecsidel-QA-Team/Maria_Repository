@@ -2,7 +2,10 @@ package CAC;
 
 import static org.junit.Assert.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
@@ -15,15 +18,15 @@ public class CAC_accountCreationOnly extends Settingsfields_File {
 	
 			@Before
 			public void setUp() throws Exception{
-    		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
+    		System.setProperty("webdriver.chrome.driver", "E:\\workspace\\Maria_Repository\\lib\\chromedriver.exe");
     			/*DesiredCapabilities cap = DesiredCapabilities.internetExplorer();
     			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true
     			cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);*/
-    				//ChromeOptions opts =  new ChromeOptions(); poner esta opción cuando se vaya a subir a Git
-    				//opts.setBinary("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"); poner esta opción cuando se vaya a subir a Git
+    				//ChromeOptions opts =  new ChromeOptions(); //poner esta opción cuando se vaya a subir a Git
+    				//opts.setBinary("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"); //poner esta opción cuando se vaya a subir a Git
     				driver = new ChromeDriver();//opts); poner esta opción cuando se vaya a subir al Git
-    				driver.manage().window().maximize();	
-    				driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+    				//driver.manage().window().maximize();	
+    				driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 			}
 
 			@After
@@ -56,12 +59,21 @@ public class CAC_accountCreationOnly extends Settingsfields_File {
 				takeScreenShot("E:\\Selenium\\","homeCACCVHPage"+timet+".jpg");
 				takeScreenShot("E:\\workspace\\Maria_Repository\\CAC_accountCreationAlone\\attachments\\","homeCACCVHPage.jpg");
 				BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
-				Thread.sleep(2000);					
-				action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
+				Thread.sleep(1000);			
+				//*[@id="ctl00_aspMenu"]/ul/li[2]/ul/li[1]/a
+				//action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
+				
+				//action.contextClick().build().perform();
+				action.moveToElement(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
+				action.clickAndHold();
+				//action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
 				Thread.sleep(1000);
-				action.moveToElement(driver.findElement(By.linkText("Seleccionar cuenta")));
+				
+				action.moveToElement(driver.findElement(By.linkText("Crear cuenta"))).build().perform();;
+				action.clickAndHold();
+				//Thread.sleep(1000);
 				action.clickAndHold(driver.findElement(By.linkText("Crear cuenta"))).build().perform();
-				Thread.sleep(500);
+				Thread.sleep(1000);
 				driver.findElement(By.linkText("Prepago")).click();								
 				Thread.sleep(1000);
 				accountNumbr = driver.findElement(By.id("ctl00_SectionZone_LblTitle")).getText();
