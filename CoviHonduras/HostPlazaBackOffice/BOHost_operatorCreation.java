@@ -69,10 +69,9 @@ public void crearOperadores() throws Exception {
 		takeScreenShot("E:\\workspace\\Maria_Repository\\BOHost_crearOperadores\\attachments\\","homeBOVHPage.jpg");
 		BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
 		Thread.sleep(2000);					
-		action.clickAndHold(driver.findElement(By.linkText("Configuración sistema"))).build().perform();
-		Thread.sleep(1000);
-		action.moveToElement(driver.findElement(By.linkText("Configuración de peaje")));
-		action.clickAndHold(driver.findElement(By.linkText("Operadores"))).build().perform();
+		action.moveToElement(driver.findElement(By.linkText("Configuración sistema"))).build().perform();
+		Thread.sleep(1000);		
+		action.moveToElement(driver.findElement(By.linkText("Operadores"))).build().perform();
 		Thread.sleep(500);
 		driver.findElement(By.linkText("Gestión de operadores")).click();								
 		Thread.sleep(1000);
@@ -195,6 +194,7 @@ public void crearOperadores() throws Exception {
 		}else{
 			System.out.println("La telecarga de operadores con la version: "+transactions.get(0)+" ha bajado a la plaza con el nombre de archivo: "+transactions.get(1));
 		}
+		System.out.println("Se ha probado en la versión del BO: " + getVersion("BO")+" y HM Manager: "+getVersion("HM"));
 	}catch(Exception e){
 		e.printStackTrace();
 		fail();

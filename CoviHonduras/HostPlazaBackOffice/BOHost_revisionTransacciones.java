@@ -40,8 +40,7 @@ public class BOHost_revisionTransacciones extends Settingsfields_File{
 					takeScreenShot("E:\\Selenium\\","homepageCVH_"+timet+".jpg");
 					takeScreenShot("E:\\workspace\\Mari_Repository\\BOHost_revisionTransacciones\\attachments\\","homepageCVH.jpg");
 					Thread.sleep(2000);					
-					action.clickAndHold(driver.findElement(By.linkText("Transacciones"))).build().perform();
-					action.moveToElement(driver.findElement(By.linkText("Consolidación de información"))).build().perform();
+					action.moveToElement(driver.findElement(By.linkText("Transacciones"))).build().perform();					
 					Thread.sleep(1000);
 					driver.findElement(By.linkText("Revisión de Transacciones")).click();								
 					Thread.sleep(2000);
@@ -64,6 +63,7 @@ public class BOHost_revisionTransacciones extends Settingsfields_File{
 					Thread.sleep(1500);
 					System.out.println("Busqueda Completa: "+ elementsFound);
 					Thread.sleep(1000);
+					System.out.println("Se ha probado en la versión del BO: " + getVersion("BO")+" y Host Manager: "+getVersion("HM"));
 				}catch(Exception e){
 					e.printStackTrace();
 					fail();
@@ -81,6 +81,6 @@ public class BOHost_revisionTransacciones extends Settingsfields_File{
 			
 		
 		
-	  //Edit buttons icons configuration.	  
+
 	      	
 }

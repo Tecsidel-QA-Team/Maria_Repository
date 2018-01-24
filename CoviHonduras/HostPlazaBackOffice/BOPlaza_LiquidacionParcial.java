@@ -57,7 +57,7 @@ public static void accountLiquidacionParcial() throws Exception {
 	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónParcial\\attachments\\","homeBOPlazaCVHPage.jpg");
 	BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
 	Thread.sleep(2000);					
-	action.clickAndHold(driver.findElement(By.linkText("Gestión de cobrador"))).build().perform();
+	action.moveToElement(driver.findElement(By.linkText("Gestión de cobrador"))).build().perform();
 	Thread.sleep(1000);
 	driver.findElement(By.linkText("Liquidación parcial")).click();
 	Thread.sleep(2000);
@@ -105,6 +105,7 @@ public static void accountLiquidacionParcial() throws Exception {
 	takeScreenShot("E:\\Selenium\\","LiquidacionInvoice"+timet+".jpg");
 	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónParcial\\attachments\\","LiquidacionInvoice.jpg");
 	Thread.sleep(1000);
+	System.out.println("Se ha probado en la versión del BO: " + getVersion("BO")+" y Plaza Manager: "+getVersion("HM"));
 	}
 
 		public static boolean isAlertPresent(){

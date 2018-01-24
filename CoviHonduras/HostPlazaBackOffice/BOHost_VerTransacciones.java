@@ -65,8 +65,7 @@ public class BOHost_VerTransacciones extends Settingsfields_File{
 					takeScreenShot("E:\\Selenium\\","homeHostCVHPage"+timet+".jpg");
 					takeScreenShot("E:\\workspace\\Maria_Repository\\BOHost_VerTranscciones\\attachments\\","homeHostCVHPage.jpg");	
 					Thread.sleep(2000);					
-					action.clickAndHold(driver.findElement(By.linkText("Transacciones"))).build().perform();
-					action.moveToElement(driver.findElement((By.linkText("Consolidación de revisiones")))).build().perform();
+					action.moveToElement(driver.findElement(By.linkText("Transacciones"))).build().perform();					
 					Thread.sleep(1000);
 					driver.findElement(By.linkText("Ver transacciones")).click();								
 					Thread.sleep(1000);
@@ -81,6 +80,7 @@ public class BOHost_VerTransacciones extends Settingsfields_File{
 					takeScreenShot("E:\\Selenium\\","verTransaccionesResults"+timet+".jpg");
 					takeScreenShot("E:\\workspace\\Maria_Repository\\BOHost_VerTranscciones\\attachments\\","verTransaccionesRetults.jpg");
 					Thread.sleep(1000);
+					System.out.println("Se ha probado en la versión del BO: " + getVersion("BO")+" y Host Manager: "+getVersion("HM"));
 				
 				}catch(Exception e){
 					e.printStackTrace();
