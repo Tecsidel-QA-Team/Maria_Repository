@@ -50,7 +50,7 @@ public class CAC_accountCreationAssigningTag extends Settingsfields_File {
 		}
 		System.out.println("Se ha creado la cuenta: "+accountNumbr.substring(7, 16)+" con un Vehiculo con la matricula "+matriNu+" y el tag asignado No.: "+ tagIdNmbr);
 		Thread.sleep(3000);
-		System.out.println("Se ha probado en la versión del CAC BO: " + BOVersion.substring(1,16)+" y CAC Manager: "+BOVersion.substring(17));
+		System.out.println("Se ha probado en la versión del CAC BO: " + getVersion("BO")+" y CAC Manager: "+getVersion("HM"));
 	}
 
 public static void accountCreationAssigningTag() throws Exception {
