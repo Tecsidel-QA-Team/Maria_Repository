@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class Settingsfields_File {
 	public static String dateverTransacciones;
+	public static String hmVersion;
 	public static String BoHostUrl="http://virtualbo-qa/BOQAHostCoviHonduras/web/forms/core/login.aspx";
 	public static String BoPlazaUrl="http://virtualbo-qa/BOQAPlazaCoviHonduras/web/forms/core/login.aspx";
 	public static String RUCid = "ctl00_ContentZone_ctrlAccountData_txt_RUC_box_data";	
@@ -239,6 +240,36 @@ public class Settingsfields_File {
      		  numbering = min+rand.nextInt((max-min)+1);
      		  return numbering;    		  
        	}
+     	
+     	public static String getVersion (String versionSelected){
+     		
+			hmVersion = BOVersion.substring(1);
+			if (BOVersion.contains("_")){								
+				if (BOVersion.length()<17){
+					BOVersion = BOVersion.substring(1);
+					hmVersion = "HM is not Running";
+				}else{
+					BOVersion = BOVersion.substring(1, 16);
+					hmVersion = BOVersion.substring(18);
+				}
+			}else{
+				if (BOVersion.length()<8){
+					BOVersion = BOVersion.substring(1);
+					hmVersion = "HM is not Running";
+				}else{
+					BOVersion = BOVersion.substring(1, 7);
+					hmVersion = BOVersion.substring(9);
+				}
+			}
+			if (versionSelected == "BO"){
+				versionSelected = BOVersion;
+			}
+			if (versionSelected == "HM"){
+				versionSelected = hmVersion;
+			} 
+			return versionSelected;
+			
+     	}
      	/*public static String dniLetra (int dni){
   		  return String.valueOf(dni)+(NIF_STRING_ASOCIATION.charAt(dni % 23));
   	  }*/
