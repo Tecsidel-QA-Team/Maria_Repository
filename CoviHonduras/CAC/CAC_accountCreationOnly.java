@@ -38,11 +38,11 @@ public class CAC_accountCreationOnly extends Settingsfields_File {
 				    }
 }
 			@Test
-			public void accountCreationInit() throws Exception {
+			public void accountCreationInit() throws Exception {				
 				accountCreation();
 				Thread.sleep(1000);
 				System.out.println("Se ha creado la cuenta: "+accountNumbr.substring(7,16)+" correctamente");
-				System.out.println("Se ha probado en la versión del CAC BO: " + BOVersion.substring(1,16)+" y CAC Manager: "+BOVersion.substring(17));
+				System.out.println("Se ha probado en la versión del CAC BO y HM: " + getVersion("BO")+" y CAC Manager: "+getVersion("HM"));
 			}
 
 		public static void accountCreation() throws Exception {
@@ -59,20 +59,11 @@ public class CAC_accountCreationOnly extends Settingsfields_File {
 				takeScreenShot("E:\\Selenium\\","homeCACCVHPage"+timet+".jpg");
 				takeScreenShot("E:\\workspace\\Maria_Repository\\CAC_accountCreationAlone\\attachments\\","homeCACCVHPage.jpg");
 				BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
-				Thread.sleep(1000);			
-				//*[@id="ctl00_aspMenu"]/ul/li[2]/ul/li[1]/a
-				//action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
-				
+				Thread.sleep(1000);						
 				//action.contextClick().build().perform();
 				action.moveToElement(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
-				action.clickAndHold();
-				//action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
 				Thread.sleep(1000);
-				
 				action.moveToElement(driver.findElement(By.linkText("Crear cuenta"))).build().perform();;
-				action.clickAndHold();
-				//Thread.sleep(1000);
-				action.clickAndHold(driver.findElement(By.linkText("Crear cuenta"))).build().perform();
 				Thread.sleep(1000);
 				driver.findElement(By.linkText("Prepago")).click();								
 				Thread.sleep(1000);
