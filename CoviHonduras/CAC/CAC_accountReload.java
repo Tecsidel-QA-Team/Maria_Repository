@@ -52,7 +52,7 @@ public class CAC_accountReload extends Settingsfields_File {
 				
 		Thread.sleep(1000);
 		System.out.println("Se Recargado la cuenta "+accountNumbr.substring(7, 16)+" correctamente y posee un saldo de: "+Saldo);
-		System.out.println("Se ha probado en la versión del CAC BO: " + BOVersion.substring(1,16)+" y CAC Manager: "+BOVersion.substring(17));
+		System.out.println("Se ha probado en la versión del CAC BO: " + getVersion("BO")+" y CAC Manager: "+getVersion("HM"));
 	}
 
 public static void accountReload() throws Exception {

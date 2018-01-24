@@ -41,6 +41,7 @@ public class CAC_LiquidacionFinal extends Settingsfields_File {
 		accountLiquidacionFinal();
 		Thread.sleep(1000);	
 		System.out.println("Se ha cerrado una Liquidación Final correctamente");
+		System.out.println("Se ha probado en la versión del CAC BO: " + getVersion("BO")+" y CAC Manager: "+getVersion("HM"));
 		
 	}
 

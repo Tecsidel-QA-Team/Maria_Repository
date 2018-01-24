@@ -65,6 +65,7 @@ public class CAC_ReloadCreationAndAccountAssignment extends Settingsfields_File 
 			fail("El recargo se ha creado pero no se ha podido aplicar a la cuenta "+accountNumbr.substring(7, 16)+" por un error");
 			System.out.println("El recargo se ha creado pero no se ha podido aplicar a la cuenta "+accountNumbr.substring(7, 16)+" por un error, verificar pantallazo o log de error");
 		}
+		System.out.println("Se ha probado en la versión del CAC BO: " + getVersion("BO")+" y CAC Manager: "+getVersion("HM"));
 		
 	}
 
@@ -133,10 +134,9 @@ public static void accountReload() throws Exception {
 	public static void accountCreation() throws Exception{
 		Actions action = new Actions(driver);
 		Thread.sleep(2000);					
-		action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
-		Thread.sleep(1000);
-		action.moveToElement(driver.findElement(By.linkText("Seleccionar cuenta")));
-		action.clickAndHold(driver.findElement(By.linkText("Crear cuenta"))).build().perform();
+		action.moveToElement(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
+		Thread.sleep(1000);		
+		action.moveToElement(driver.findElement(By.linkText("Crear cuenta"))).build().perform();
 		Thread.sleep(500);
 		driver.findElement(By.linkText("Prepago")).click();								
 		Thread.sleep(1000);
@@ -200,7 +200,7 @@ public static void accountReload() throws Exception {
 	public static void accountUpdate() throws Exception{
 		Actions action = new Actions(driver);
 		Thread.sleep(1000);
-		action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
+		action.moveToElement(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
 		Thread.sleep(1000);
 		driver.findElement(By.linkText("Seleccionar cuenta")).click();
 		Thread.sleep(2000);
@@ -246,7 +246,7 @@ public static void accountReload() throws Exception {
 	public static void vehicleCreation() throws Exception{
 		Actions action = new Actions(driver);
 		Thread.sleep(1000);
-		action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
+		action.moveToElement(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
 		Thread.sleep(1000);
 		driver.findElement(By.linkText("Seleccionar cuenta")).click();
 		Thread.sleep(2000);
@@ -286,7 +286,7 @@ public static void accountReload() throws Exception {
 	public static void tagMissed() throws Exception{
 		Actions action = new Actions(driver);
 		Thread.sleep(1000);
-		action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
+		action.moveToElement(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
 		Thread.sleep(1000);
 		driver.findElement(By.linkText("Seleccionar cuenta")).click();
 		Thread.sleep(2000);

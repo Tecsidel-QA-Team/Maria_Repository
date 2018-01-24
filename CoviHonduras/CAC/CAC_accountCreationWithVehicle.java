@@ -47,7 +47,7 @@ public class CAC_accountCreationWithVehicle extends Settingsfields_File {
 		takeScreenShot("E:\\Selenium\\","accountCreated"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\accountCreationVehicle\\attachments\\","accountCreated.jpg");
 		System.out.println("Se ha creado la cuenta: "+accountNumbr.substring(7,16)+" correctamente y con el vehículo creado con la matricula: "+matriNu);
-		System.out.println("Se ha probado en la versión del CAC BO: " + BOVersion.substring(1,16)+" y CAC Manager: "+BOVersion.substring(17));
+		System.out.println("Se ha probado en la versión del CAC BO: " + getVersion("BO")+" y CAC Manager: "+getVersion("HM"));
 		
 	}
 

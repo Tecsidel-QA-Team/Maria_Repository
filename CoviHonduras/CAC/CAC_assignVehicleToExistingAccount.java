@@ -51,7 +51,7 @@ public class CAC_assignVehicleToExistingAccount extends Settingsfields_File {
 		CAC.CAC_accountCreationWithVehicle.accountCreationWithVehicle();		
 		Thread.sleep(1000);
 		System.out.println("Se le asignado el vehículo con la matrícula " +matriNu+" a la cuenta "+accountNumbr.substring(7, 16)+" correctamente");
-		System.out.println("Se ha probado en la versión del CAC BO: " + BOVersion.substring(1,16)+" y CAC Manager: "+BOVersion.substring(17));
+		System.out.println("Se ha probado en la versión del CAC BO: " + getVersion("BO")+" y CAC Manager: "+getVersion("HM"));
 	}
 
 public static void assigningVehcleToExistingAccount() throws Exception {

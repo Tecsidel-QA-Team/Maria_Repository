@@ -41,6 +41,7 @@ public class CAC_LiquidacionParcial extends Settingsfields_File {
 		accountLiquidacionParcial();
 		Thread.sleep(1000);	
 		System.out.println("Se ha cerrado una Liquidación Parcial correctamente");
+		System.out.println("Se ha probado en la versión del CAC BO: " + getVersion("BO")+" y CAC Manager: "+getVersion("HM"));
 		
 	}
 

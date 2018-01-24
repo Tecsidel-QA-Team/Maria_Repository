@@ -61,7 +61,7 @@ public class CAC_assignTagToExistingAccount extends Settingsfields_File {
 		}
 		Thread.sleep(1000);
 		System.out.println("Se le asignado el el tag No."+tagIdNmbr+" a la cuenta "+accountNumbr.substring(7, 16)+" correctamente");
-		System.out.println("Se ha probado en la versión del CAC BO: " + BOVersion.substring(1,16)+" y CAC Manager: "+BOVersion.substring(17));
+		System.out.println("Se ha probado en la versión del CAC BO: " + getVersion("BO")+" y CAC Manager: "+getVersion("HM"));
 	}
 
 public static void assignTagToExistingAccount() throws Exception {

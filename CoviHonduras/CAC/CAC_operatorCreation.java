@@ -130,7 +130,7 @@ public void crearOperadores() throws Exception {
 		takeScreenShot("E:\\Selenium\\","userCreatedscreenHome"+timet+".jpg");
 		takeScreenShot("E:\\workspace\\Maria_Repository\\CAC_crearOperadores\\attachments\\","userCreatedscreenHome.jpg");		
 		System.out.println("Se ha Creado el "+lastcreated+" con la contraseaña: 00001"+ " en el grupo de "+operatorG.substring(04));
-		System.out.println("Se ha probado en la versión del CAC BO: " + BOVersion.substring(1,16)+" y CAC Manager: "+BOVersion.substring(17));
+		System.out.println("Se ha probado en la versión del CAC BO: " + getVersion("BO")+" y CAC Manager: "+getVersion("HM"));
 	}catch(Exception e){
 		e.printStackTrace();
 		fail();
