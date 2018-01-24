@@ -20,7 +20,7 @@ public class CAC_accountClose extends Settingsfields_File {
 	
 			@Before
 			public void setUp() throws Exception{
-    		System.setProperty("webdriver.chrome.driver", "C:\\Selenium\\chromedriver.exe");
+    		System.setProperty("webdriver.chrome.driver", "E:\\workspace\\maria_repository\\lib\\chromedriver.exe");
     			/*DesiredCapabilities cap = DesiredCapabilities.internetExplorer();
     			cap.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true
     			cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);*/
@@ -73,7 +73,7 @@ public static void accountClose() throws Exception {
 	takeScreenShot("E:\\workspace\\Maria_Repository\\accountClose\\attachments\\","homeCACCVHPage.jpg");
 	BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
 	Thread.sleep(2000);					
-	action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
+	action.moveToElement(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
 	Thread.sleep(1000);
 	driver.findElement(By.linkText("Seleccionar cuenta")).click();
 	Thread.sleep(2000);
