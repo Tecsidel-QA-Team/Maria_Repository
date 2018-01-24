@@ -58,7 +58,7 @@ public static void accountLiquidacionFinal() throws Exception {
 	takeScreenShot("E:\\workspace\\Maria_Repository\\LiquidaciónFinal\\attachments\\","homeCACCVHPage.jpg");
 	BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
 	Thread.sleep(2000);					
-	action.clickAndHold(driver.findElement(By.linkText("Gestión de cobrador"))).build().perform();
+	action.moveToElement(driver.findElement(By.linkText("Gestión de cobrador"))).build().perform();
 	Thread.sleep(1000);
 	driver.findElement(By.linkText("Liquidación final")).click();
 	Thread.sleep(2000);

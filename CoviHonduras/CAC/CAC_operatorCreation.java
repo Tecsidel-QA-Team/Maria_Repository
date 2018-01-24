@@ -55,10 +55,9 @@ public void crearOperadores() throws Exception {
 		BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
 	
 		Thread.sleep(2000);					
-		action.clickAndHold(driver.findElement(By.linkText("Configuración sistema"))).build().perform();
-		Thread.sleep(1000);
-		action.moveToElement(driver.findElement(By.linkText("Parámetros de cuenta")));
-		action.clickAndHold(driver.findElement(By.linkText("Operadores"))).build().perform();
+		action.moveToElement(driver.findElement(By.linkText("Configuración sistema"))).build().perform();
+		Thread.sleep(1000);		
+		action.moveToElement(driver.findElement(By.linkText("Operadores"))).build().perform();
 		Thread.sleep(500);
 		driver.findElement(By.linkText("Gestión de operadores")).click();								
 		Thread.sleep(1000);

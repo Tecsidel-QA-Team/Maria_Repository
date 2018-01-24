@@ -68,7 +68,7 @@ public static void accountReload() throws Exception {
 	takeScreenShot("E:\\workspace\\Maria_Repository\\accountReload\\attachments\\","homeCACCVHPage.jpg");
 	BOVersion = driver.findElement(By.id("ctl00_statusRight")).getText();
 	Thread.sleep(2000);					
-	action.clickAndHold(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
+	action.moveToElement(driver.findElement(By.linkText("Gestión de cuentas"))).build().perform();
 	Thread.sleep(1000);
 	driver.findElement(By.linkText("Seleccionar cuenta")).click();
 	Thread.sleep(2000);
