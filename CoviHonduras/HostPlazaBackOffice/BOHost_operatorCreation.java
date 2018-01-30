@@ -194,7 +194,7 @@ public void crearOperadores() throws Exception {
 		}else{
 			System.out.println("La telecarga de operadores con la version: "+transactions.get(0)+" ha bajado a la plaza con el nombre de archivo: "+transactions.get(1));
 		}
-		System.out.println("Se ha probado en la versión del BO: " + getVersion("BO")+" y HM Manager: "+getVersion("HM"));
+		System.out.println("Se ha probado en la versión del BO: " + getVersion("BO")+" y Host Manager: "+getVersion("HM"));
 	}catch(Exception e){
 		e.printStackTrace();
 		fail();
